@@ -1,315 +1,242 @@
-/* villie — public website
-   Brand tokens follow project_brand_kit_v2.md (May 2026).
-   Old v1 tokens kept as deprecated aliases so the existing site pages
-   (index, privacy, terms, contact) don't break — to be removed once
-   every page has migrated to the v2 vocabulary. */
+/* ════════════════════════════════════════════════════════════════
+   villie — shared stylesheet
+   Drives the secondary pages: privacy, terms, contact, support,
+   /onboard and /auth/confirm. The landing page (index.html) carries
+   its own layout on top of these same tokens.
+
+   Brand R2, per the Complete Brand Guidelines (Softriver, Oct 2026).
+   Primary   White #FFFFFF · Champagne #EEE3C0 · Pastel Heather #B6C4CD
+             · Glaucous #6083A3
+   Grayscale Graphite #6E7180 · Space #9DA2B3 · Steel #BCBFCC
+             · Smoke #D3D6E0 · Cloud #EDEFF7
+   Typeface  Geist — one family. Medium 500 headings, Regular 400 text.
+
+   ── NON-NEGOTIABLES ─────────────────────────────────────────────
+   1. CONTRAST. Glaucous cannot carry small text: champagne-on-glaucous
+      is 3.1:1 and white-on-glaucous 4.0:1, both under the 4.5:1 floor.
+      Dark bands that carry text use --ink (#33465A), the deeper tone of
+      the same blue — champagne on ink is 7.6:1. Glaucous is for
+      accents, fills and large display only.
+      Body ink on white 9.7:1 · on champagne 7.6:1 · on heather 5.4:1.
+   2. The book forbids gradients, rotation, opacity shifts on the logo,
+      and any colour outside the palette. All four apply here.
+   3. The wordmark SVG inherits currentColor and is trimmed to its ink
+      bounds, so a CSS height is the real rendered height. It is painted
+      as a mask so one file serves both lockups. Never re-export padded.
+   4. Labels lowercase, never tracked caps.
+   ════════════════════════════════════════════════════════════════ */
 
 :root {
-  /* ───── v2 brand · Sunshine With Depth ───── */
-  /* Surfaces */
-  /* ───── Aligned to the V10 app brand (apps/mobile/src/utils/constants.ts) ───── */
-  --cream:        #FCF7EF;  /* page (genz_cream) */
-  --paper:        #FFFCF6;  /* alt page (genz_bone) */
-  --parchment:    #F2E6DD;  /* cards (genz_clay) */
-  --card:         #FFFCF6;  /* pure-white substitute */
-  --butter:       #DA9A2C;  /* honey — bee, sunshine, halos (genz_honey) */
-  --marigold:     #DA9A2C;  /* honey energy */
-  /* Action — SCARLET is the app's one spark. The token keeps the "cinnamon"
-     name so existing rules work, but the value is the app's primary.
-     ⚠️ The app constant is still *named* `genz_rose`, but its VALUE was
-     repainted #D96C88 → #E14A32 on 2026-08-08. The name did not change, so
-     matching by name gives you the old pink. Copy VALUES from
-     apps/mobile/src/utils/constants.ts, never names. */
-  --cinnamon:     #E14A32;  /* genz_rose  — CTA, link, the spark */
-  --cinnamon-dk:  #B03A22;  /* genz_berry — pressed */
-  /* Support row */
-  --caramel:      #E98A6A;  /* warm chestnut accent (genz_caramel) */
-  --blush:        #F7C5CB;  /* empathy (genz_blush) */
-  --salmon:       #F7C5CB;
-  /* Inks */
-  --cocoa:        #43260F;  /* chestnut ink (genz_chestnut) — instead of #000 */
-  --walnut:       #7A4A24;  /* body on cream (genz_softink) */
-  --amber:        #7A4A24;  /* eyebrows/secondary (app uses softink) */
-  /* Reserve */
-  --sage:         #E98A6A;
-  --moss:         #E98A6A;
-  --persimmon:    #E0543B;  /* IG only — NEVER in the app */
-  /* Manual chapter pills — IN-APP defaults (the "fresh" preset). The
-     hand-drawn sub-palette below is the alternate "original" preset. */
-  --pill-feel:    #EDA8A0;  /* salmon */
-  --pill-heal:    #606E46;  /* moss */
-  --pill-feed:    #FAD080;  /* butter */
-  --pill-sleep:   #D4A880;  /* caramel */
-  --pill-tips:    #C07840;  /* cinnamon */
-  /* Manual chapter sub-palette · original preset · use only when explicitly
-     swapping presets. Don't mix sub-palette + fresh on the same surface. */
-  --feel-orig:    #D09789;
-  --heal-orig:    #6E7E51;
-  --feed-orig:    #C7B39B;
-  --sleep-orig:   #A1775F;
-  --tips-orig:    #986A50;
-  /* Hairline border for cards */
-  --border:       #E5DBC4;
-  /* Pure white shouldn't be used — Card token covers it */
-  --white:        #FEFAF6;
+  /* Primary palette */
+  --white:      #FFFFFF;
+  --champagne:  #EEE3C0;
+  --heather:    #B6C4CD;
+  --glaucous:   #6083A3;
+  --ink:        #33465A;  /* deeper tone of the brand blue — text + dark bands */
 
-  /* ───── v1 deprecated aliases (kept until full site sweep) ───── */
-  --rust:         var(--cinnamon);
-  --rust-dark:    var(--cinnamon-dk);
-  --rust-light:   #D4744F;
-  --brown-deep:   var(--cocoa);
-  --brown-mid:    var(--walnut);
-  --olive:        var(--moss);
-  --gold:         var(--marigold);
-  --persimmon-old: #B22A2A;  /* v1 had no Persimmon equivalent; keep cite */
-  --text-dark:    var(--cocoa);
-  --text-mid:     var(--walnut);
-  --text-light:   var(--amber);
+  /* Grayscale palette */
+  --graphite:   #6E7180;
+  --space:      #9DA2B3;
+  --steel:      #BCBFCC;
+  --smoke:      #D3D6E0;
+  --cloud:      #EDEFF7;
+
+  /* Semantic */
+  --page:       var(--white);
+  --surface:    var(--champagne);
+  --card:       var(--white);
+  --text:       var(--ink);
+  --text-mid:   var(--graphite);
+  --border:     var(--smoke);
+  --accent:     var(--glaucous);
+
+  --gutter: 20px;
+  --maxw: 760px;
 }
-
-* { box-sizing: border-box; }
 
 html, body {
   margin: 0;
-  padding: 0;
-  background: var(--cream);
-  color: var(--text-dark);
-  /* v2: Plus Jakarta Sans replaces DM Sans for all body / UI / forms.
-     DM Sans is kept as a system fallback during the migration window
-     so older cached pages render passably until the new font loads. */
-  font-family: 'Hanken Grotesk', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 16px;
-  line-height: 1.65;
+  background: var(--page);
+  color: var(--text);
+  font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
+* { box-sizing: border-box; }
+img, svg { max-width: 100%; }
 
-a {
-  color: var(--rust);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: border-color 120ms ease;
-}
-a:hover { border-bottom-color: var(--rust); }
-/* Visible keyboard focus ring for links + buttons (accessibility) */
+a { color: var(--glaucous); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { color: var(--ink); }
 a:focus-visible,
-button:focus-visible {
-  outline: 2px solid var(--rust);
-  outline-offset: 2px;
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
   border-radius: 3px;
 }
 
+/* ── Masthead ───────────────────────────────────────────────── */
 header.site {
-  border-bottom: 1px solid var(--border);
-  background: var(--white);
+  background: var(--champagne);
+  padding: 22px 0;
 }
 header.site .inner {
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 20px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
+  max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap;
 }
-header.site .brand {
-  font-family: 'Bricolage Grotesque', Georgia, sans-serif;
-  font-style: italic;
-  font-size: 22px;
-  color: var(--brown-deep);
-  border-bottom: none;
+/* The wordmark is a mask so it can be recoloured per lockup from one
+   file. aspect-ratio comes from the trimmed viewBox (432.53 x 128.88). */
+header.site .brand { display: inline-flex; align-items: center; color: var(--glaucous); border: none; text-decoration: none; }
+header.site .brand i,
+footer.site .brand i {
+  display: block; height: 34px; aspect-ratio: 432.53 / 128.88;
+  background: currentColor;
+  -webkit-mask: url(villie-wordmark.svg) no-repeat center / contain;
+          mask: url(villie-wordmark.svg) no-repeat center / contain;
 }
+header.site nav { display: flex; gap: 20px; font-size: 15px; flex-wrap: wrap; }
+header.site nav a { color: var(--ink); text-decoration: none; opacity: .78; }
+header.site nav a:hover,
+header.site nav a.active { opacity: 1; text-decoration: underline; text-underline-offset: 3px; }
 
-/* v2 wordmark — hand-drawn villie PNG. Replaces the Playfair italic
-   "The Village" wordmark on any page that opts in with `.brand-villie`.
-   The asset is TRIMMED to its ink bounds, so these heights are the wordmark's
-   real rendered height. (It used to carry 58% transparent padding, which made
-   a nominal 56px render as ~23px of visible logo — the "logo looks tiny"
-   complaint. Never re-export this PNG with padding.) */
-header.site .brand.brand-villie {
-  display: inline-flex;
-  align-items: center;
-  padding: 2px 0;
-}
-header.site .brand.brand-villie img {
-  height: 38px;
-  width: auto;
-  display: block;
-}
 @media (max-width: 600px) {
-  header.site .brand.brand-villie img { height: 30px; }
-}
-header.site nav {
-  display: flex;
-  gap: 18px;
-  font-size: 14px;
-}
-header.site nav a {
-  color: var(--text-mid);
-  border-bottom: none;
-}
-header.site nav a:hover, header.site nav a.active {
-  color: var(--rust);
+  header.site .inner { flex-direction: column; align-items: flex-start; gap: 10px; }
+  header.site .brand i, footer.site .brand i { height: 28px; }
+  header.site nav { gap: 16px; font-size: 14px; }
 }
 
+/* ── Page body ──────────────────────────────────────────────── */
 main {
-  max-width: 760px;
+  max-width: var(--maxw);
   margin: 0 auto;
-  padding: 48px 24px 64px;
+  padding: 56px var(--gutter) 88px;
 }
 
-/* v2 typography — "Less italic. More presence."
-   Default Playfair is roman 700. Italic 600 is a per-page flourish, marked
-   inline via <em>. h3 swaps from DM Sans tracked-caps to JetBrains Mono,
-   walnut color, per the v2 eyebrow/metadata mapping. */
 h1 {
-  font-family: 'Bricolage Grotesque', Georgia, sans-serif;
-  font-weight: 700;
-  font-size: 44px;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  color: var(--cocoa);
-  margin: 0 0 14px;
-}
-h1 em {
-  font-style: italic;
-  font-weight: 600;
-  color: var(--caramel);
+  font-size: clamp(32px, 5vw, 44px);
+  line-height: 1.08; letter-spacing: -0.03em;
+  font-weight: 500; margin: 0 0 12px;
 }
 h2 {
-  font-family: 'Bricolage Grotesque', Georgia, sans-serif;
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 1.15;
-  letter-spacing: -0.015em;
-  color: var(--cocoa);
-  margin: 44px 0 14px;
-}
-h2 em {
-  font-style: italic;
-  font-weight: 600;
-  color: var(--caramel);
+  font-size: 23px; line-height: 1.2; letter-spacing: -0.02em;
+  font-weight: 500; margin: 40px 0 12px;
 }
 h3 {
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-weight: 500;
-  font-size: 11px;
-  color: var(--amber);
-  margin: 28px 0 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.26em;
+  font-size: 17px; line-height: 1.3; letter-spacing: -0.01em;
+  font-weight: 500; margin: 26px 0 8px; color: var(--ink);
 }
+/* Emphasis inside a heading stays a plain italic — the brand has no
+   script face, and the book's logo is the only expressive letterform. */
+h1 em, h2 em, h3 em { font-style: italic; font-weight: 500; }
 
-/* V10 flourish: <em> inside a display heading renders as the Caveat hand-script
-   (matches the app + landing). Scoped to headings so legal body emphasis stays
-   a normal italic. */
-h1 em, h2 em, .card h3 em {
-  font-family: 'Caveat', cursive;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 1.15em;
-  letter-spacing: 0;
-}
-
-p { margin: 0 0 14px; color: var(--text-dark); }
-ul, ol { margin: 0 0 14px; padding-left: 22px; }
-li { margin-bottom: 6px; }
+p { margin: 0 0 15px; color: var(--text); }
+ul, ol { margin: 0 0 15px; padding-left: 22px; }
+li { margin-bottom: 7px; }
+strong { font-weight: 500; color: var(--ink); }
 
 .lede {
-  font-size: 18px;
-  color: var(--text-mid);
-  margin-bottom: 28px;
+  font-size: 19px; line-height: 1.5; letter-spacing: -0.01em;
+  color: var(--text-mid); margin: 0 0 28px;
 }
-
 .meta {
-  font-size: 13px;
-  color: var(--text-light);
-  margin-bottom: 32px;
+  font-size: 14px; color: var(--graphite); margin: 0 0 32px;
 }
 
+/* ── Callout ────────────────────────────────────────────────── */
 .callout {
-  background: rgba(225,74,50,0.06);
-  border: 1px solid rgba(225,74,50,0.28);
-  padding: 16px 20px;
+  background: var(--champagne);
+  border: 1px solid rgba(96,131,163,.22);
+  padding: 18px 22px;
   border-radius: 14px;
-  margin: 24px 0;
+  margin: 26px 0;
 }
-.callout strong { color: var(--brown-deep); }
+.callout p:last-child { margin-bottom: 0; }
+.callout strong { color: var(--ink); }
+/* Crisis keeps a sober, non-brand red: safety information should read as
+   urgent, not on-brand. This is the one sanctioned exception. */
+.callout.crisis { background: #FBEDEA; border-color: rgba(140,47,29,.30); }
+.callout.crisis strong { color: #8C2F1D; }
+.callout.olive  { background: var(--cloud); border-color: var(--steel); }
 
-.callout.crisis { background: rgba(178,42,42,0.06); border-color: rgba(178,42,42,0.30); }
-.callout.olive  { background: rgba(96,110,70,0.07); border-color: rgba(96,110,70,0.30); }
-
+/* ── Cards ──────────────────────────────────────────────────── */
 .cards {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 16px;
-  margin: 32px 0 16px;
-}
-@media (max-width: 600px) {
-  .cards { grid-template-columns: 1fr; }
-  h1 { font-size: 32px; }
+  margin: 26px 0;
 }
 .card {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 16px;
   padding: 22px;
-  box-shadow: 0 6px 16px rgba(61,31,14,0.06);
 }
 .card a { border-bottom: none; }
-/* v2 card title — Playfair roman 700 cocoa, replaces v1 rust-uppercase eyebrow look */
-.card h3 {
-  font-family: 'Bricolage Grotesque', Georgia, sans-serif;
-  font-weight: 700;
-  margin: 0 0 8px;
-  text-transform: none;
-  letter-spacing: -0.012em;
-  font-size: 19px;
-  color: var(--cocoa);
-}
-.card h3 em {
-  font-style: italic;
-  font-weight: 600;
-  color: var(--caramel);
-}
-.card p { color: var(--walnut); font-size: 14px; line-height: 1.5; margin: 0; }
+.card h3 { margin: 0 0 8px; font-size: 17px; }
+.card p { color: var(--text-mid); font-size: 15px; line-height: 1.5; margin: 0; }
 
+/* ── Tables ─────────────────────────────────────────────────── */
 table.disclosures {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 16px 0 24px;
-  font-size: 14px;
+  width: 100%; border-collapse: collapse; margin: 22px 0; font-size: 15px;
 }
 table.disclosures th, table.disclosures td {
-  text-align: left;
-  padding: 10px 12px;
-  border-bottom: 1px solid var(--border);
-  vertical-align: top;
+  text-align: left; padding: 11px 13px;
+  border-bottom: 1px solid var(--border); vertical-align: top;
 }
 table.disclosures th {
-  background: var(--white);
-  color: var(--brown-deep);
-  font-weight: 700;
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  background: var(--cloud); font-weight: 500; color: var(--ink);
 }
 
+/* ── Buttons ────────────────────────────────────────────────── */
+.btn {
+  display: inline-block; padding: 14px 30px; border-radius: 999px;
+  background: var(--ink); color: var(--champagne);
+  font-size: 16px; font-weight: 500; text-decoration: none;
+  border: none; cursor: pointer; font-family: inherit;
+}
+.btn:hover { background: #2A3B4C; color: var(--champagne); }
+
+/* ── Footer ─────────────────────────────────────────────────── */
 footer.site {
-  border-top: 1px solid var(--border);
-  background: var(--white);
-  padding: 32px 24px;
-  margin-top: 64px;
-  font-size: 13px;
-  color: var(--text-light);
+  background: var(--ink); color: var(--heather);
+  padding: 44px 0 38px; margin-top: 64px;
 }
 footer.site .inner {
-  max-width: 760px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
+  max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter);
+  display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; align-items: center;
 }
-footer.site a { color: var(--text-mid); border-bottom: none; }
-footer.site a:hover { color: var(--rust); }
+footer.site .brand { color: var(--champagne); display: inline-block; }
+footer.site .brand i { height: 26px; }
+footer.site a { color: var(--champagne); }
+footer.site nav { display: flex; gap: 20px; font-size: 15px; flex-wrap: wrap; }
+footer.site .fine { font-size: 13.5px; color: var(--space); width: 100%; margin: 0; }
+
+/* ── Legacy token bridge ────────────────────────────────────────
+   /onboard and /auth/confirm still carry inline styles written against
+   the previous warm palette. Their token names are mapped onto the new
+   one here so nothing resolves to an empty value — an undefined var()
+   silently paints nothing, which is how the confirm page's CTA became an
+   invisible button. Delete this block once those two pages are rebuilt
+   on the R2 system. ─────────────────────────────────────────────── */
+:root {
+  --cinnamon:    var(--ink);        /* was the action colour */
+  --cinnamon-dk: #2A3B4C;           /* pressed */
+  --cocoa:       var(--ink);        /* headline ink */
+  --walnut:      var(--graphite);   /* body */
+  --amber:       var(--graphite);   /* eyebrows, captions */
+  --caramel:     var(--glaucous);   /* accent */
+  --butter:      var(--champagne);
+  --parchment:   var(--champagne);
+  --paper:       var(--white);
+  --salmon:      var(--heather);
+  --rust:        var(--glaucous);
+  --brown-deep:  var(--ink);
+  --text-dark:   var(--ink);
+  --white:       #FFFFFF;
+  --olive:       var(--graphite);
+  --cream:       var(--champagne);
+  --sage:        var(--heather);
+  --moss:        var(--graphite);
+}

@@ -1,62 +1,52 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Caveat:wght@700&family=Hanken+Grotesk:wght@500;600&display=swap" rel="stylesheet" />
+<!-- Source for og-image.jpg. Render at 1200x630:
+     chrome --headless --force-device-scale-factor=2 --window-size=1200,630 \
+            --screenshot=out.png file://<path>/og-card.html
+     then downscale to 1200x630 and save as JPEG q90 (WhatsApp skips
+     preview images much over ~300KB). -->
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
   * { margin: 0; box-sizing: border-box; }
   html, body { width: 1200px; height: 630px; overflow: hidden; }
   .card {
-    width: 1200px; height: 630px; position: relative;
-    padding: 86px 90px;
+    width: 1200px; height: 630px; position: relative; overflow: hidden;
+    padding: 84px 88px;
     display: flex; flex-direction: column; justify-content: center;
-    background:
-      radial-gradient(42% 60% at 10% 10%, rgba(244,197,60,0.42), transparent 60%),
-      radial-gradient(46% 64% at 92% 14%, rgba(247,197,203,0.58), transparent 62%),
-      radial-gradient(52% 72% at 88% 92%, rgba(225,74,50,0.24), transparent 62%),
-      linear-gradient(165deg, #FCEFE0, #FBE6D3);
-    font-family: 'Hanken Grotesk', sans-serif;
+    background: #EEE3C0;                       /* champagne */
+    font-family: 'Geist', -apple-system, sans-serif;
+    color: #33465A;                            /* ink */
   }
-  /* The real wordmark asset, not a text lookalike — the card and the site
-     header must never drift apart. villie-wordmark.png is trimmed to its ink
-     bounds, so this height is the wordmark's true rendered height. */
+  /* The brand's cropped double-l, solid heather — no opacity trick. */
+  .mark-bg {
+    position: absolute; right: -4%; top: 50%; transform: translateY(-46%);
+    width: 430px; aspect-ratio: 1 / .83; background: #B6C4CD;
+    -webkit-mask: url(villie-emblem.png) no-repeat center / contain;
+            mask: url(villie-emblem.png) no-repeat center / contain;
+  }
+  .inner { position: relative; z-index: 1; max-width: 740px; }
+  /* The wordmark itself: one trimmed SVG, recoloured by currentColor. */
   .wm {
-    position: absolute; top: 60px; left: 90px;
-    height: 44px; width: auto; display: block;
+    display: block; height: 46px; aspect-ratio: 432.53 / 128.88;
+    background: #6083A3;                       /* glaucous */
+    -webkit-mask: url(villie-wordmark.svg) no-repeat left center / contain;
+            mask: url(villie-wordmark.svg) no-repeat left center / contain;
+    margin-bottom: 54px;
   }
-  .pill {
-    position: absolute; top: 66px; left: 250px;
-    font-family: 'Hanken Grotesk'; font-weight: 600; font-size: 15px;
-    letter-spacing: 0.16em; text-transform: uppercase; color: #B03A22;
-    background: rgba(247,197,203,0.55); border: 1px solid rgba(225,74,50,0.42);
-    border-radius: 999px; padding: 9px 18px;
-  }
-  h1 {
-    font-family: 'Bricolage Grotesque'; font-weight: 800;
-    font-size: 100px; line-height: 0.94; letter-spacing: -0.035em;
-    color: #43260F; max-width: 700px;
-  }
-  h1 em {
-    font-family: 'Caveat'; font-style: normal; font-weight: 700;
-    color: #E14A32; font-size: 1.18em;
-  }
-  p {
-    font-family: 'Hanken Grotesk'; font-weight: 500;
-    font-size: 29px; line-height: 1.32; color: #7A4A24;
-    margin-top: 30px; max-width: 660px;
-  }
-  .bee {
-    position: absolute; right: 58px; bottom: 36px; width: 320px; height: auto;
-    filter: drop-shadow(0 18px 30px rgba(107,46,14,0.22));
-  }
+  h1 { font-size: 64px; line-height: 1.04; letter-spacing: -0.035em; font-weight: 500; }
+  p  { font-size: 25px; line-height: 1.4; letter-spacing: -0.015em; color: #6E7180; margin-top: 26px; }
 </style>
 </head>
 <body>
   <div class="card">
-    <img class="wm" src="villie-wordmark.png" alt="villie" />
-    <div class="pill">opening city by city · miami first</div>
-    <h1>a village for every <em>mom.</em></h1>
-    <p>the manual, screened milk, vetted specialists, recall-checked gear &amp; real plans. one app for the whole first year.</p>
+    <div class="mark-bg"></div>
+    <div class="inner">
+      <span class="wm" role="img" aria-label="villie"></span>
+      <h1>Motherhood Simplified.<br>Confidence Amplified.</h1>
+      <p>The week-by-week manual for your baby's first year.</p>
+    </div>
   </div>
 </body>
 </html>

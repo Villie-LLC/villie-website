@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>You're in · villie</title>
   <meta name="description" content="Your villie email is confirmed. Open villie on your phone and sign in." />
-  <meta name="theme-color" content="#F4ECD8" />
+  <meta name="theme-color" content="#EEE3C0" />
   <meta name="robots" content="noindex" />
 
   <!-- Language: page renders EN by default, swaps to ES when the browser's
@@ -26,7 +26,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Caveat:wght@500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Caprasimo&display=swap" rel="stylesheet" />
+  <!-- Brand typeface: Geist, per the Complete Brand Guidelines. -->
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles.css" />
   <link rel="icon" type="image/png" href="/villie-v-mark.png" />
 
@@ -40,16 +41,7 @@
     /* Soft page wash matching the app's V9PageBackdrop */
     body {
       background:
-        linear-gradient(
-          to bottom,
-          #FCF7F2 0%,
-          #FCFAF6 12%,
-          #FDFBF6 25%,
-          #FDFBF6 75%,
-          #FCFAF6 88%,
-          #FBF5EF 95%,
-          #FAF1EA 100%
-        );
+        var(--champagne);
       background-attachment: fixed;
       min-height: 100vh;
       display: flex;
@@ -94,7 +86,7 @@
       width: 220px;
       height: 220px;
       border-radius: 50%;
-      background: #F5BEB6;
+      background: var(--heather);
       opacity: 0.18;
       filter: blur(8px);
       z-index: -1;
@@ -105,6 +97,12 @@
       height: 88px;
       margin-bottom: var(--s-5);
     }
+    .confirm-bee .emblem {
+      display: block; width: 46px; aspect-ratio: 1 / .83;
+      background: var(--glaucous);
+      -webkit-mask: url(/villie-emblem.png) no-repeat center / contain;
+              mask: url(/villie-emblem.png) no-repeat center / contain;
+    }
     .confirm-bee img {
       width: 100%;
       height: 100%;
@@ -113,7 +111,7 @@
     }
 
     .confirm-eyebrow {
-      font-family: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+      font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
       font-size: 11px;
       letter-spacing: 0.26em;
       text-transform: uppercase;
@@ -122,7 +120,7 @@
     }
 
     .confirm-title {
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       font-weight: 700;
       font-size: clamp(40px, 8vw, 56px);
       line-height: 1.05;
@@ -136,7 +134,7 @@
     }
 
     .confirm-lede {
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       font-size: 18px;
       line-height: 1.55;
       color: var(--walnut);
@@ -156,7 +154,7 @@
       margin-bottom: var(--s-6);
     }
     .confirm-steps-eyebrow {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
       font-size: 10.5px;
       letter-spacing: 0.24em;
       text-transform: uppercase;
@@ -194,7 +192,7 @@
       padding: 16px 28px;
       background: var(--cinnamon);
       color: var(--card);
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       font-weight: 600;
       font-size: 16px;
       letter-spacing: 0.01em;
@@ -270,8 +268,8 @@
 <body>
   <header class="site">
     <div class="inner">
-      <a href="/" class="brand brand-villie" aria-label="villie home">
-        <img src="/villie-wordmark.png" alt="villie" />
+      <a href="/" class="brand" aria-label="villie home">
+        <i role="img" aria-label="villie"></i>
       </a>
       <nav>
         <a href="/"><span class="lang-en">Home</span><span class="lang-es">Inicio</span></a>
@@ -286,7 +284,7 @@
     <div class="confirm-halo" aria-hidden="true"></div>
 
     <div class="confirm-bee">
-      <img src="/villie-bee.png" alt="" aria-hidden="true" />
+      <i class="emblem" role="presentation"></i>
     </div>
 
     <div class="confirm-eyebrow">

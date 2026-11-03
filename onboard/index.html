@@ -9,9 +9,10 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Brand typeface: Geist, per the Complete Brand Guidelines. -->
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet" />
   <!-- v2 brand stack: Caprasimo (wordmark only) · Playfair Display (display, roman 700 default + italic 600 flourish)
        · Plus Jakarta Sans (body, buttons, forms) · JetBrains Mono (eyebrows, metadata). -->
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Caveat:wght@500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Caprasimo&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../styles.css" />
 
   <style>
@@ -43,7 +44,7 @@
       display: inline-flex;
       align-items: center;
       gap: 9px;
-      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
       font-size: 11px;
       font-weight: 500;
       letter-spacing: 0.26em;
@@ -61,7 +62,7 @@
     /* Title — Playfair roman 700 default. Italic em = the single flourish,
        caramel-toned per the brand mapping ("Daily greeting · cocoa + caramel italic"). */
     .ob-title {
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       font-weight: 700;
       font-size: 44px;
       line-height: 1.02;
@@ -79,7 +80,7 @@
        Cinnamon color always; slightly larger to compensate for Caprasimo's
        lower x-height vs Playfair at the same nominal size. */
     .ob-title .ob-villie-inline {
-      font-family: 'Caprasimo', Georgia, serif;
+      font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       font-style: normal;
       font-weight: 400;
       color: var(--cinnamon);
@@ -99,7 +100,7 @@
     }
     /* Lead — Plus Jakarta 400, cocoa at slight emphasis-reduce. */
     .ob-lead {
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       font-size: 15px;
       line-height: 1.55;
       color: var(--cocoa);
@@ -147,7 +148,7 @@
     }
     /* Card eyebrow — JetBrains Mono walnut, smaller than masthead eyebrow */
     .ob-card-eyebrow {
-      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
       font-size: 10px;
       font-weight: 500;
       letter-spacing: 0.24em;
@@ -160,7 +161,7 @@
     /* Card title — Playfair roman 700. NO italic on card titles (italic rule:
        only one flourish per state, which lives on the masthead title). */
     .ob-card-title {
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       font-weight: 700;
       font-size: 22px;
       line-height: 1.05;
@@ -224,7 +225,7 @@
     /* Form labels — Plus Jakarta 500, amber. Per the kit: "Label · Plus Jakarta 500". */
     .ob-label {
       display: block;
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       font-size: 12px;
       font-weight: 500;
       letter-spacing: 0.06em;
@@ -239,7 +240,7 @@
     }
     .ob-help {
       display: block;
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       font-size: 12px;
       color: var(--walnut);
       opacity: 0.7;
@@ -249,7 +250,7 @@
     .ob-input, .ob-select, .ob-textarea {
       width: 100%;
       padding: 11px 12px;
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       font-size: 15px;
       color: var(--cocoa);
       background: var(--paper);
@@ -295,7 +296,7 @@
       right: 10px;
       top: 50%;
       transform: translateY(-50%);
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       font-size: 11px;
       font-weight: 600;
       letter-spacing: 0.04em;
@@ -312,7 +313,7 @@
     .ob-cta {
       width: 100%;
       padding: 14px 18px;
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       font-size: 15px;
       font-weight: 600;
       letter-spacing: 0.02em;
@@ -338,7 +339,7 @@
     .ob-banner {
       padding: 12px 14px;
       border-radius: 8px;
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       font-size: 13px;
       line-height: 1.5;
       margin: 0 0 14px;
@@ -377,7 +378,7 @@
 <body>
   <header class="site">
     <div class="inner">
-      <a href="../index.html" class="brand brand-villie" aria-label="villie home"><img src="../villie-wordmark.png" alt="villie" /></a>
+      <a href="../index.html" class="brand" aria-label="villie home"><i role="img" aria-label="villie"></i></a>
       <nav>
         <a href="../index.html">Home</a>
         <a href="../privacy.html">Privacy</a>
@@ -399,7 +400,7 @@
       <div class="ob-card">
         <p class="ob-card-eyebrow">Need help</p>
         <h2 class="ob-card-title">Email us, we'll help.</h2>
-        <p style="font-family:'Plus Jakarta Sans',sans-serif; color: var(--cocoa); opacity:0.8; font-size: 14px;">
+        <p style="font-family:'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--cocoa); opacity:0.8; font-size: 14px;">
           Reach <a href="mailto:help@villieapp.com" style="color: var(--cinnamon); border-bottom: 1px solid currentColor;">help@villieapp.com</a> from the address you were invited at and we'll get you signed up another way.
         </p>
       </div>
@@ -424,7 +425,6 @@
     <!-- ─── State B · Invalid token ───────────────────────── -->
     <section class="ob-state" id="state-invalid" aria-live="polite">
       <div class="ob-masthead">
-        <span class="ob-villie" aria-hidden="true"><img src="../villie-bee.png" alt="" /></span>
         <p class="ob-eyebrow">Specialist onboarding</p>
         <h1 class="ob-title">This link <em>can't open.</em><span class="ob-heart-dot"></span></h1>
         <p class="ob-lead" id="invalid-detail">Your invite link is expired, already used, or no longer valid.</p>
@@ -432,7 +432,7 @@
       <div class="ob-card">
         <p class="ob-card-eyebrow">What's next</p>
         <h2 class="ob-card-title">Reach back out, we'll fix it.</h2>
-        <p style="font-family:'Plus Jakarta Sans',sans-serif; color: var(--cocoa); opacity:0.8; font-size: 14px; line-height: 1.55;">
+        <p style="font-family:'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--cocoa); opacity:0.8; font-size: 14px; line-height: 1.55;">
           Email <a href="mailto:help@villieapp.com" style="color: var(--cinnamon); border-bottom: 1px solid currentColor;">help@villieapp.com</a> from the same address you were invited at. We'll issue a fresh link the same day.
         </p>
       </div>
@@ -441,7 +441,6 @@
     <!-- ─── State C · Form ────────────────────────────────── -->
     <section class="ob-state" id="state-form">
       <div class="ob-masthead">
-        <span class="ob-villie" aria-hidden="true"><img src="../villie-bee.png" alt="" /></span>
         <p class="ob-eyebrow">Specialist onboarding</p>
         <!-- Italic accent lives here — the one flourish per brand kit.
              Default: italic on the verb-phrase "set you up." Personalized:
@@ -538,7 +537,6 @@
     <!-- ─── State D · Submitting ──────────────────────────── -->
     <section class="ob-state" id="state-submitting" aria-live="polite">
       <div class="ob-masthead">
-        <span class="ob-villie" aria-hidden="true"><img src="../villie-bee.png" alt="" /></span>
         <p class="ob-eyebrow">Almost there</p>
         <h1 class="ob-title">Creating your <em>profile.</em><span class="ob-heart-dot"></span></h1>
         <p class="ob-lead">One moment — we're setting up your account and adding you to the directory.</p>
@@ -553,7 +551,6 @@
     <!-- ─── State E · Success ─────────────────────────────── -->
     <section class="ob-state" id="state-success" aria-live="polite">
       <div class="ob-masthead">
-        <span class="ob-villie" aria-hidden="true"><img src="../villie-bee.png" alt="" /></span>
         <p class="ob-eyebrow">You're in</p>
         <!-- Success state has no CTA → the wordmark gets its cinnamon spark.
              "villie" is set in Caprasimo cinnamon inline (the body-copy
@@ -566,10 +563,10 @@
         <span class="ob-mark-yolk" aria-hidden="true"></span>
         <p class="ob-card-eyebrow">Next steps</p>
         <h2 class="ob-card-title">Make your profile shine.</h2>
-        <p style="font-family:'Plus Jakarta Sans',sans-serif; color: var(--cocoa); opacity:0.85; font-size: 14px; line-height: 1.55; max-width: 92%;">
+        <p style="font-family:'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--cocoa); opacity:0.85; font-size: 14px; line-height: 1.55; max-width: 92%;">
           Sign in to the iOS or Android app to upload a photo, list services and pricing, set your practice location, and turn on telehealth.
         </p>
-        <p style="font-family:'Plus Jakarta Sans',sans-serif; color: var(--walnut); opacity:0.75; font-size: 13px; line-height: 1.5; margin-top: 14px;">
+        <p style="font-family:'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--walnut); opacity:0.75; font-size: 13px; line-height: 1.5; margin-top: 14px;">
           Until your photo's added, your card shows a quiet placeholder. Most moms scroll past placeholder cards — so this is the one thing worth doing today.
         </p>
       </div>
