@@ -144,12 +144,16 @@ strong { font-weight: 500; color: var(--ink); }
   font-size: 14px; color: var(--graphite); margin: 0 0 32px;
 }
 
+/* Square corners throughout. Pills, rounded cards and icon chips read as
+   generated-template furniture — the founder spotted them on sight. Structure
+   comes from rules and alignment instead. */
+
 /* ── Callout ────────────────────────────────────────────────── */
 .callout {
   background: var(--champagne);
   border: 1px solid rgba(96,131,163,.22);
   padding: 18px 22px;
-  border-radius: 14px;
+  border-radius: 0;
   margin: 26px 0;
 }
 .callout p:last-child { margin-bottom: 0; }
@@ -170,7 +174,7 @@ strong { font-weight: 500; color: var(--ink); }
 .card {
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 0;
   padding: 22px;
 }
 .card a { border-bottom: none; }
@@ -191,7 +195,7 @@ table.disclosures th {
 
 /* ── Buttons ────────────────────────────────────────────────── */
 .btn {
-  display: inline-block; padding: 14px 30px; border-radius: 999px;
+  display: inline-block; padding: 16px 30px; border-radius: 0;
   background: var(--ink); color: var(--champagne);
   font-size: 16px; font-weight: 500; text-decoration: none;
   border: none; cursor: pointer; font-family: inherit;

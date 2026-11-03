@@ -8,7 +8,6 @@
   <meta name="theme-color" content="#EEE3C0" />
   <link rel="canonical" href="https://villieapp.com/" />
 
-  <!-- Open Graph -->
   <meta property="og:title" content="villie · Motherhood Simplified. Confidence Amplified." />
   <meta property="og:description" content="The week-by-week manual for your baby's first year. Expert guidance, your milk stash, calming sounds and the gear worth buying — in one app." />
   <meta property="og:type" content="website" />
@@ -20,7 +19,6 @@
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="villie — Motherhood Simplified. Confidence Amplified." />
 
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="villie · Motherhood Simplified. Confidence Amplified." />
   <meta name="twitter:description" content="The week-by-week manual for your baby's first year." />
@@ -28,8 +26,6 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <!-- Brand typeface: Geist, per the Complete Brand Guidelines (Softriver, Oct 2026).
-       One family does display and text — Medium 500 for headings, Regular 400 for body. -->
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
@@ -37,229 +33,152 @@
   <link rel="apple-touch-icon" href="villie-emblem-180.png" />
 
   <style>
-    /* ════════════════ villie landing — brand R2 ════════════════
-       Palette and type come from the Complete Brand Guidelines.
-       Primary: White #FFFFFF · Champagne #EEE3C0 · Pastel Heather #B6C4CD
-                · Glaucous #6083A3
-       Grayscale: Graphite #6E7180 · Space #9DA2B3 · Steel #BCBFCC
-                · Smoke #D3D6E0 · Cloud #EDEFF7
+    /* ════════════════ villie landing ════════════════
+       Built to read like the brand book itself: numbered sections, hairline
+       rules, a label column left and content right, flat full-bleed colour
+       fields, tight negative tracking.
 
-       ── NON-NEGOTIABLES (check on every change) ──────────────
-       1. CONTRAST. Glaucous cannot carry small text: champagne-on-
-          glaucous is 3.1:1 and white-on-glaucous 4.0:1, both under the
-          4.5:1 minimum. Text-bearing dark bands therefore use --ink
-          (#33465A, the deeper tone of the same blue): champagne on ink
-          is 7.6:1. Glaucous stays for accents, fills and large display.
-       2. NO GRADIENTS, no rotation, no opacity shifts on the logo, and
-          no colour outside the palette — the book forbids all four.
-       3. The wordmark SVG inherits `currentColor`, so one asset serves
-          both lockups. It is trimmed to its ink bounds: a height in CSS
-          is the real rendered height. Never re-export it padded.
-       4. Labels lowercase, never tracked caps.
-       ──────────────────────────────────────────────────────── */
+       ── DELIBERATELY ABSENT ──────────────────────────────────────────
+       Pill / fully-rounded buttons, dot-prefixed eyebrows, rounded cards
+       with icon chips, and small muted captions sitting beside a CTA.
+       Those are the stock vocabulary of generated landing pages and the
+       founder spotted them immediately. Corners here are square and the
+       structure comes from rules and alignment, not from boxes. Keep it so.
+
+       ── PALETTE / CONTRAST ───────────────────────────────────────────
+       Champagne #EEE3C0 · Pastel Heather #B6C4CD · Glaucous #6083A3.
+       Glaucous cannot carry small text (3.1:1 on champagne, 4.0:1 on
+       white). Text-bearing dark fields use --ink #33465A, the deeper tone
+       of the same blue: champagne on ink is 7.6:1.
+       ───────────────────────────────────────────────────────────────── */
 
     :root {
-      --white:      #FFFFFF;
-      --champagne:  #EEE3C0;
-      --heather:    #B6C4CD;
-      --glaucous:   #6083A3;
-      --ink:        #33465A;  /* deeper tone of the brand blue — text + dark bands */
-      --graphite:   #6E7180;
-      --space:      #9DA2B3;
-      --steel:      #BCBFCC;
-      --smoke:      #D3D6E0;
-      --cloud:      #EDEFF7;
-
-      --s1: 4px;  --s2: 8px;  --s3: 12px; --s4: 16px;
-      --s5: 24px; --s6: 32px; --s7: 48px; --s8: 72px; --s9: 112px;
-      --gutter: 20px;
-      --maxw: 1120px;
+      --white:#FFFFFF; --champagne:#EEE3C0; --heather:#B6C4CD; --glaucous:#6083A3;
+      --ink:#33465A; --graphite:#6E7180; --space:#9DA2B3; --steel:#BCBFCC;
+      --smoke:#D3D6E0; --cloud:#EDEFF7;
+      --rule:rgba(51,70,90,.16); --rule-dk:rgba(238,227,192,.22);
+      --gutter:28px; --maxw:1180px; --label:190px;
     }
 
     html, body {
-      margin: 0;
-      background: var(--white);
-      color: var(--ink);
-      font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      font-size: 17px;
-      line-height: 1.55;
-      -webkit-font-smoothing: antialiased;
+      margin:0; background:var(--white); color:var(--ink);
+      font-family:'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size:17px; line-height:1.5; -webkit-font-smoothing:antialiased;
     }
-    * { box-sizing: border-box; }
-    img, svg { max-width: 100%; }
+    * { box-sizing:border-box; }
+    img { max-width:100%; }
+    main { max-width:none; margin:0; padding:0; }
+    .wrap { max-width:var(--maxw); margin:0 auto; padding:0 var(--gutter); }
 
-    /* styles.css constrains <main> to a 760px reading column for the legal
-       pages. The landing manages its own widths per band, so it opts out —
-       otherwise every full-bleed section renders as a centred 712px strip. */
-    main { max-width: none; margin: 0; padding: 0; }
-    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter); }
+    /* The book's own page structure: a small label left, content right. */
+    .cols { display:grid; grid-template-columns:var(--label) 1fr; gap:40px; }
+    .lab { font-size:13.5px; color:var(--graphite); padding-top:9px; margin:0; }
+    .manual .lab { color:var(--heather); }
+    .num { color:var(--space); margin-right:.55em; }
 
-    /* ── Header ── */
-    header.lp {
-      padding: var(--s5) 0;
-      background: var(--champagne);
-    }
+    header.lp { background:var(--champagne); }
     header.lp .inner {
-      max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter);
-      display: flex; align-items: center; justify-content: space-between; gap: var(--s4);
+      max-width:var(--maxw); margin:0 auto; padding:24px var(--gutter);
+      display:flex; align-items:flex-end; justify-content:space-between; gap:20px;
+      border-bottom:1px solid var(--rule);
     }
-    /* The wordmark is painted as a CSS mask so the single trimmed SVG can be
-       recoloured per lockup (glaucous on champagne, champagne on ink) without
-       shipping two files that can drift apart. aspect-ratio comes from the
-       trimmed viewBox (432.53 x 128.88), so a height is the real height. */
-    .lp-mark { display: inline-flex; align-items: center; color: var(--glaucous); text-decoration: none; }
+    .lp-mark { display:inline-flex; color:var(--glaucous); text-decoration:none; }
     .lp-mark i, footer.lp .mark i {
-      display: block; height: 34px; aspect-ratio: 432.53 / 128.88;
-      background: currentColor;
-      -webkit-mask: url(villie-wordmark.svg) no-repeat center / contain;
-              mask: url(villie-wordmark.svg) no-repeat center / contain;
+      display:block; height:32px; aspect-ratio:432.53 / 128.88; background:currentColor;
+      -webkit-mask:url(villie-wordmark.svg) no-repeat center / contain;
+              mask:url(villie-wordmark.svg) no-repeat center / contain;
     }
-    nav.lp { display: flex; gap: var(--s5); font-size: 15px; }
-    nav.lp a { color: var(--ink); text-decoration: none; opacity: .8; }
-    nav.lp a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 3px; }
+    nav.lp { display:flex; gap:26px; font-size:14.5px; }
+    nav.lp a { color:var(--ink); text-decoration:none; padding-bottom:2px; border-bottom:1px solid transparent; }
+    nav.lp a:hover { border-bottom-color:var(--ink); }
 
-    /* ── Hero ── */
-    .hero { background: var(--champagne); padding: var(--s8) 0 var(--s9); position: relative; overflow: hidden; }
-    .hero .wrap { position: relative; z-index: 1; }
-    .hero::after {
-      content: ''; position: absolute; right: -5%; top: 50%; transform: translateY(-46%);
-      width: 400px; aspect-ratio: 1 / .83;
-      background: var(--heather);
-      -webkit-mask: url(villie-emblem.png) no-repeat center / contain;
-              mask: url(villie-emblem.png) no-repeat center / contain;
-      pointer-events: none;
-    }
-    @media (max-width: 900px) { .hero::after { width: 240px; right: -14%; } }
-    @media (max-width: 640px) { .hero::after { display: none; } }
-    .hero .eyebrow {
-      font-size: 14px; color: var(--graphite); margin: 0 0 var(--s5);
-      display: flex; align-items: center; gap: var(--s2);
-    }
-    .hero .eyebrow::before {
-      content: ''; width: 7px; height: 7px; border-radius: 50%;
-      background: var(--glaucous); display: inline-block;
-    }
-    h1 {
-      font-size: clamp(38px, 6.4vw, 76px);
-      line-height: 1.02; letter-spacing: -0.03em;
-      font-weight: 500; margin: 0 0 var(--s5); max-width: 22ch;
-    }
-    .hero .lede {
-      font-size: clamp(17px, 2vw, 21px); line-height: 1.45; letter-spacing: -0.01em;
-      color: var(--graphite); max-width: 54ch; margin: 0 0 var(--s6);
-    }
-    .ctas { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s4); }
+    .hero { background:var(--champagne); padding:92px 0 108px; }
+    h1 { font-size:clamp(38px,5.4vw,74px); line-height:.98; letter-spacing:-.035em; font-weight:500; margin:0 0 32px; }
+    .lede { font-size:clamp(17px,1.7vw,20px); line-height:1.45; letter-spacing:-.01em;
+            color:var(--graphite); max-width:50ch; margin:0 0 40px; }
+
+    /* Square. Not a pill. */
     .btn {
-      display: inline-block; padding: 15px 32px; border-radius: 999px;
-      background: var(--ink); color: var(--champagne);
-      font-size: 16px; font-weight: 500; text-decoration: none; border: none;
-      cursor: pointer; font-family: inherit;
+      display:inline-flex; align-items:center; gap:14px; padding:17px 30px; border-radius:0;
+      background:var(--ink); color:var(--champagne); font-size:16px; font-weight:500;
+      text-decoration:none; border:none; cursor:pointer; font-family:inherit;
     }
-    .btn:hover { background: #2A3B4C; }
-    .btn:focus-visible, a:focus-visible, input:focus-visible, button:focus-visible {
-      outline: 2px solid var(--ink); outline-offset: 3px;
-    }
-    .note { font-size: 14px; color: var(--graphite); margin: var(--s4) 0 0; }
+    .btn:hover { background:#26354A; }
+    a:focus-visible, button:focus-visible, input:focus-visible { outline:2px solid var(--ink); outline-offset:3px; }
 
-    /* ── Sections ── */
-    section { padding: var(--s9) 0; }
-    .eyebrow-s { font-size: 14px; color: var(--graphite); margin: 0 0 var(--s3); }
-    h2 {
-      font-size: clamp(28px, 3.8vw, 44px); line-height: 1.08; letter-spacing: -0.03em;
-      font-weight: 500; margin: 0 0 var(--s5); max-width: 20ch;
-    }
-    h3 { font-size: 20px; line-height: 1.25; letter-spacing: -0.02em; font-weight: 500; margin: 0 0 var(--s2); }
-    p { margin: 0 0 var(--s4); }
+    section { padding:104px 0; }
+    h2 { font-size:clamp(27px,3.4vw,42px); line-height:1.06; letter-spacing:-.032em;
+         font-weight:500; margin:0 0 26px; max-width:18ch; }
+    p { margin:0 0 18px; }
+    .body { color:var(--graphite); max-width:56ch; }
 
-    /* ── The Manual: the one hero feature ── */
-    .manual { background: var(--ink); color: var(--champagne); }
-    .manual .eyebrow-s { color: var(--heather); }
-    .manual h2 { color: var(--champagne); }
-    .manual p { color: var(--heather); max-width: 52ch; }
-    .manual-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: var(--s8); align-items: center; }
-    .weeks { display: grid; grid-template-columns: repeat(auto-fill, minmax(42px, 1fr)); gap: 6px; }
-    .week {
-      aspect-ratio: 1; border-radius: 7px; background: rgba(238,227,192,.10);
-      display: grid; place-items: center; font-size: 11px; color: var(--heather);
-    }
-    .week.on { background: var(--champagne); color: var(--ink); font-weight: 500; }
+    .manual { background:var(--ink); color:var(--champagne); }
+    .manual h2 { color:var(--champagne); }
+    .manual .body { color:var(--heather); }
+    .weeks { display:grid; grid-template-columns:repeat(13,1fr); max-width:620px; margin-top:46px;
+             border-top:1px solid var(--rule-dk); border-left:1px solid var(--rule-dk); }
+    .week { aspect-ratio:1; display:grid; place-items:center; font-size:11px; color:var(--heather);
+            border-right:1px solid var(--rule-dk); border-bottom:1px solid var(--rule-dk); }
+    .week.on { background:var(--champagne); color:var(--ink); font-weight:500; }
 
-    /* ── Feature list ── */
-    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s6); }
-    .card {
-      background: var(--white); border: 1px solid var(--smoke);
-      border-radius: 18px; padding: var(--s6);
-    }
-    .card .ic {
-      width: 42px; height: 42px; border-radius: 11px; margin-bottom: var(--s4);
-      background: var(--champagne); display: grid; place-items: center;
-      color: var(--glaucous);
-    }
-    .card p { color: var(--graphite); font-size: 15.5px; margin: 0; }
-    .card.soon { background: var(--cloud); border-color: var(--cloud); }
-    .tag {
-      display: inline-block; font-size: 12.5px; color: var(--graphite);
-      border: 1px solid var(--steel); border-radius: 999px;
-      padding: 3px 10px; margin-bottom: var(--s3);
-    }
+    /* Index rows, not cards. */
+    .rows { border-top:1px solid var(--rule); margin-top:10px; }
+    .row { display:grid; grid-template-columns:1fr 1.5fr auto; gap:32px; align-items:baseline;
+           padding:26px 0; border-bottom:1px solid var(--rule); }
+    .row h3 { font-size:21px; letter-spacing:-.022em; font-weight:500; margin:0; }
+    .row p { color:var(--graphite); margin:0; font-size:16px; }
+    .state { font-size:13.5px; color:var(--space); white-space:nowrap; }
+    .row.soon h3, .row.soon p { color:var(--space); }
 
-    /* ── Quote band ── */
-    .quote { background: var(--heather); }
-    .quote p {
-      font-size: clamp(22px, 3.2vw, 36px); line-height: 1.22; letter-spacing: -0.03em;
-      color: var(--ink); max-width: 22ch; margin: 0; font-weight: 500;
-    }
+    .statement { background:var(--heather); padding:116px 0; }
+    .statement p { font-size:clamp(26px,4vw,52px); line-height:1.08; letter-spacing:-.035em;
+                   color:var(--ink); max-width:17ch; margin:0; font-weight:500; }
 
-    /* ── Waitlist ── */
-    .waitlist { background: var(--champagne); }
-    .wl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s8); align-items: start; }
-    .field { display: block; margin-bottom: var(--s4); }
-    .field span { display: block; font-size: 14px; color: var(--graphite); margin-bottom: 6px; }
-    .field input {
-      width: 100%; padding: 13px 16px; border-radius: 12px;
-      border: 1px solid var(--steel); background: var(--white);
-      font-family: inherit; font-size: 16px; color: var(--ink);
-    }
-    .field input::placeholder { color: var(--space); }
-    .row2 { display: grid; grid-template-columns: 1fr 1.3fr; gap: var(--s4); }
-    .wl-ok { display: none; }
-    .wl-ok[aria-hidden="false"] { display: block; }
-    .err { color: #8C2F1D; font-size: 14.5px; margin-top: var(--s3); }
+    .join { background:var(--champagne); }
+    .fields { max-width:560px; }
+    .field { display:block; margin-bottom:20px; }
+    .field span { display:block; font-size:13.5px; color:var(--graphite); margin-bottom:7px; }
+    .field input { width:100%; padding:14px 15px; border-radius:0; border:1px solid var(--steel);
+                   background:var(--white); font-family:inherit; font-size:16px; color:var(--ink); }
+    .field input:focus { border-color:var(--ink); }
+    .row2 { display:grid; grid-template-columns:1fr 1.25fr; gap:18px; }
+    .ok { display:none; }
+    .ok[aria-hidden="false"] { display:block; }
+    .err { color:#8C2F1D; font-size:15px; margin-top:14px; }
+    .terms { font-size:13.5px; color:var(--graphite); margin:18px 0 0; max-width:46ch; }
 
-    /* ── Footer ── */
-    footer.lp { background: var(--ink); color: var(--heather); padding: var(--s8) 0 var(--s7); }
-    footer.lp .inner {
-      max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter);
-      display: flex; flex-wrap: wrap; gap: var(--s5); justify-content: space-between; align-items: flex-end;
-    }
-    footer.lp a { color: var(--champagne); text-decoration: none; }
-    footer.lp a:hover { text-decoration: underline; text-underline-offset: 3px; }
-    footer.lp .mark { color: var(--champagne); display: inline-block; }
-    footer.lp .mark i { height: 26px; }
-    .f-links { display: flex; gap: var(--s5); font-size: 15px; flex-wrap: wrap; }
-    .f-fine { font-size: 13.5px; color: var(--space); margin: var(--s4) 0 0; width: 100%; }
+    footer.lp { background:var(--ink); color:var(--heather); padding:56px 0 44px; }
+    footer.lp .inner { max-width:var(--maxw); margin:0 auto; padding:0 var(--gutter);
+                       display:flex; flex-wrap:wrap; gap:24px; justify-content:space-between; align-items:flex-end; }
+    footer.lp .mark { color:var(--champagne); display:inline-block; }
+    footer.lp .mark i { height:24px; }
+    footer.lp a { color:var(--champagne); text-decoration:none; border-bottom:1px solid transparent; }
+    footer.lp a:hover { border-bottom-color:var(--champagne); }
+    .f-links { display:flex; gap:24px; font-size:14.5px; flex-wrap:wrap; }
+    .f-fine { font-size:13px; color:var(--space); margin:26px 0 0; width:100%;
+              border-top:1px solid var(--rule-dk); padding-top:20px; }
 
-    /* ── Responsive ── */
-    @media (max-width: 860px) {
-      .manual-grid, .wl-grid { grid-template-columns: 1fr; gap: var(--s6); }
-      .features { grid-template-columns: 1fr; gap: var(--s4); }
-      section { padding: var(--s8) 0; }
-      .hero { padding: var(--s7) 0 var(--s8); }
+    @media (max-width:900px) {
+      :root { --gutter:22px; }
+      .cols { grid-template-columns:1fr; gap:16px; }
+      .lab { padding-top:0; }
+      .row { grid-template-columns:1fr; gap:8px; }
+      .state { order:-1; }
+      .weeks { grid-template-columns:repeat(9,1fr); }
+      section, .statement { padding:72px 0; }
+      .hero { padding:64px 0 76px; }
     }
-    @media (max-width: 560px) {
-      header.lp .inner { flex-direction: column; align-items: flex-start; gap: var(--s3); }
-      nav.lp { gap: var(--s4); font-size: 14px; flex-wrap: wrap; }
-      .lp-mark svg { height: 28px; }
-      .row2 { grid-template-columns: 1fr; }
-      :root { --gutter: 18px; }
+    @media (max-width:560px) {
+      header.lp .inner { flex-direction:column; align-items:flex-start; gap:14px; }
+      nav.lp { gap:18px; font-size:14px; flex-wrap:wrap; }
+      .row2 { grid-template-columns:1fr; }
+      .btn { width:100%; justify-content:space-between; }
     }
-    /* Reveal is opt-in: the rule only bites once the script has added `js` to
-       <html>. If JS fails or is blocked the content renders plainly rather than
-       staying invisible forever — a hidden section is worse than an unanimated
-       one. */
     @media (prefers-reduced-motion: no-preference) {
-      .js .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
-      .js .reveal.in { opacity: 1; transform: none; }
+      /* Opt-in: if the script never runs, content renders plainly rather than
+         staying invisible forever. */
+      .js .reveal { opacity:0; transform:translateY(10px); transition:opacity .5s ease, transform .5s ease; }
+      .js .reveal.in { opacity:1; transform:none; }
     }
   </style>
 </head>
@@ -267,148 +186,109 @@
 
   <header class="lp">
     <div class="inner">
-      <a href="/" class="lp-mark" aria-label="villie home">
-        <i role="img" aria-label="villie"></i>
-      </a>
+      <a href="/" class="lp-mark" aria-label="villie home"><i role="img" aria-label="villie"></i></a>
       <nav class="lp">
-        <a href="#inside">what's inside</a>
-        <a href="#waitlist">join</a>
-        <a href="privacy.html">privacy</a>
-        <a href="contact.html">contact</a>
+        <a href="#inside">What's inside</a>
+        <a href="#join">Join</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="contact.html">Contact</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <!-- ═══════════ HERO ═══════════ -->
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="wrap">
-        <p class="eyebrow">opening city by city · Miami first</p>
-        <h1 id="hero-title">Motherhood Simplified.<br>Confidence Amplified.</h1>
-        <p class="lede">villie is the week-by-week manual for your baby's first year — expert-backed guidance, your milk stash, calming sounds, and the gear actually worth buying. Less Googling at 3am. More knowing.</p>
-        <div class="ctas">
-          <a href="#waitlist" class="btn">join the waitlist</a>
-          <span class="note" style="margin:0;">free first week when villie opens in your city.</span>
+    <section class="hero">
+      <div class="wrap cols">
+        <p class="lab">Opening city by city<br>Miami first</p>
+        <div>
+          <h1>Motherhood Simplified.<br>Confidence Amplified.</h1>
+          <p class="lede">villie is the week-by-week manual for your baby's first year — expert-backed guidance, your milk stash, calming sounds, and the gear actually worth buying. Less Googling at 3am. More knowing.</p>
+          <a href="#join" class="btn">Join the waitlist <span aria-hidden="true">&rarr;</span></a>
         </div>
       </div>
     </section>
 
-    <!-- ═══════════ THE MANUAL — the focal point ═══════════ -->
-    <section class="manual" aria-labelledby="manual-title">
-      <div class="wrap">
-        <div class="manual-grid">
-          <div class="reveal">
-            <p class="eyebrow-s">the heart of villie</p>
-            <h2 id="manual-title">The Manual. One week at a time.</h2>
-            <p>Every week of your baby's first year gets its own briefing — what's changing, what's normal, what to watch for, and what you can safely ignore. Written plainly, grounded in expert guidance, and short enough to read one-handed.</p>
-            <p>No endless feed. No 40-tab rabbit hole at 3am. Just the week you're actually in.</p>
-          </div>
-          <div class="weeks reveal" aria-hidden="true">
-            <!-- 52 weeks; the current week reads as filled -->
-            <div class="week">1</div><div class="week">2</div><div class="week">3</div><div class="week">4</div>
-            <div class="week">5</div><div class="week">6</div><div class="week on">7</div><div class="week">8</div>
-            <div class="week">9</div><div class="week">10</div><div class="week">11</div><div class="week">12</div>
-            <div class="week">13</div><div class="week">14</div><div class="week">15</div><div class="week">16</div>
-            <div class="week">17</div><div class="week">18</div><div class="week">19</div><div class="week">20</div>
-            <div class="week">21</div><div class="week">22</div><div class="week">23</div><div class="week">24</div>
-            <div class="week">25</div><div class="week">26</div><div class="week">27</div><div class="week">28</div>
-            <div class="week">29</div><div class="week">30</div><div class="week">31</div><div class="week">32</div>
-            <div class="week">33</div><div class="week">34</div><div class="week">35</div><div class="week">36</div>
-            <div class="week">37</div><div class="week">38</div><div class="week">39</div><div class="week">40</div>
-            <div class="week">41</div><div class="week">42</div><div class="week">43</div><div class="week">44</div>
-            <div class="week">45</div><div class="week">46</div><div class="week">47</div><div class="week">48</div>
-            <div class="week">49</div><div class="week">50</div><div class="week">51</div><div class="week">52</div>
+    <section class="manual">
+      <div class="wrap cols">
+        <p class="lab"><span class="num">01</span>The Manual</p>
+        <div class="reveal">
+          <h2>One week at a time.</h2>
+          <p class="body">Every week of your baby's first year gets its own briefing — what's changing, what's normal, what to watch for, and what you can safely ignore. Written plainly, grounded in expert guidance, short enough to read one-handed.</p>
+          <p class="body">No endless feed. No forty open tabs at 3am. Just the week you're actually in.</p>
+          <div class="weeks" aria-hidden="true">
+            <div class="week">1</div><div class="week">2</div><div class="week">3</div><div class="week">4</div><div class="week">5</div><div class="week">6</div><div class="week on">7</div><div class="week">8</div><div class="week">9</div><div class="week">10</div><div class="week">11</div><div class="week">12</div><div class="week">13</div>
+            <div class="week">14</div><div class="week">15</div><div class="week">16</div><div class="week">17</div><div class="week">18</div><div class="week">19</div><div class="week">20</div><div class="week">21</div><div class="week">22</div><div class="week">23</div><div class="week">24</div><div class="week">25</div><div class="week">26</div>
+            <div class="week">27</div><div class="week">28</div><div class="week">29</div><div class="week">30</div><div class="week">31</div><div class="week">32</div><div class="week">33</div><div class="week">34</div><div class="week">35</div><div class="week">36</div><div class="week">37</div><div class="week">38</div><div class="week">39</div>
+            <div class="week">40</div><div class="week">41</div><div class="week">42</div><div class="week">43</div><div class="week">44</div><div class="week">45</div><div class="week">46</div><div class="week">47</div><div class="week">48</div><div class="week">49</div><div class="week">50</div><div class="week">51</div><div class="week">52</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ═══════════ WHAT'S INSIDE ═══════════ -->
-    <section id="inside" aria-labelledby="inside-title">
-      <div class="wrap">
-        <p class="eyebrow-s">what's inside</p>
-        <h2 id="inside-title">Everything else you reach for.</h2>
-        <div class="features">
-
-          <div class="card reveal">
-            <div class="ic" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3h8l-1 5a4 4 0 0 1 1 2.6V19a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-8.4A4 4 0 0 1 9 8L8 3Z"/><path d="M8.6 12h6.8"/></svg>
+    <section id="inside">
+      <div class="wrap cols">
+        <p class="lab"><span class="num">02</span>What's inside</p>
+        <div class="reveal">
+          <h2>Everything else you reach for.</h2>
+          <div class="rows">
+            <div class="row">
+              <h3>Your milk stash</h3>
+              <p>Every bag, every date, every ounce — so you always know what's in the freezer and what expires next.</p>
+              <span class="state">In the app</span>
             </div>
-            <h3>Your milk stash</h3>
-            <p>Every bag, every date, every ounce — tracked so you always know what's in the freezer and what expires next.</p>
-          </div>
-
-          <div class="card reveal">
-            <div class="ic" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13a8 8 0 0 1 16 0"/><path d="M4 13v3a2 2 0 0 0 2 2h1v-5H6a2 2 0 0 0-2 2Z"/><path d="M20 13v3a2 2 0 0 1-2 2h-1v-5h1a2 2 0 0 1 2 2Z"/></svg>
+            <div class="row">
+              <h3>Sounds that settle</h3>
+              <p>White noise, heartbeat, rain. Set a timer, press play, put the phone down and get your arms back.</p>
+              <span class="state">In the app</span>
             </div>
-            <h3>Sounds that settle</h3>
-            <p>White noise, heartbeat, rain. Set a timer, press play, put the phone down and get your arms back.</p>
-          </div>
-
-          <div class="card reveal">
-            <div class="ic" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 2.5 5.3 5.5.8-4 4 .9 5.9L12 16.9 7.1 19l.9-5.9-4-4 5.5-.8L12 3Z"/></svg>
+            <div class="row">
+              <h3>Picks worth buying</h3>
+              <p>The short list, not the whole catalogue. What's genuinely useful for the week you're in — and what you can skip.</p>
+              <span class="state">In the app</span>
             </div>
-            <h3>Picks worth buying</h3>
-            <p>The short list, not the whole catalogue. What's genuinely useful for the week you're in — and what you can skip.</p>
+            <div class="row soon">
+              <h3>Milk sharing</h3>
+              <p>Connecting mothers who have milk with mothers who need it. We're building this one carefully, and it opens when it's ready.</p>
+              <span class="state">Coming soon</span>
+            </div>
           </div>
-
-        </div>
-
-        <div class="card soon reveal" style="margin-top:var(--s6);">
-          <span class="tag">coming soon</span>
-          <h3>Milk sharing</h3>
-          <p style="max-width:62ch;">Connecting mothers who have milk with mothers who need it. We're building this one carefully, and it will open when it's ready — not before.</p>
         </div>
       </div>
     </section>
 
-    <!-- ═══════════ POSITIONING ═══════════ -->
-    <section class="quote">
+    <section class="statement">
       <div class="wrap">
         <p>Motherhood, minus the mental load.</p>
       </div>
     </section>
 
-    <!-- ═══════════ WAITLIST ═══════════ -->
-    <section id="waitlist" class="waitlist" aria-labelledby="wl-title">
-      <div class="wrap">
-        <div class="wl-grid">
-          <div class="reveal">
-            <p class="eyebrow-s">claim your spot</p>
-            <h2 id="wl-title">It takes a village. So we built one.</h2>
-            <p style="color:var(--graphite);max-width:46ch;">We're opening city by city, starting in Miami. Join now and you'll hear from us the moment villie lands in your zip — plus a free first week.</p>
-          </div>
-
-          <div>
+    <section id="join" class="join">
+      <div class="wrap cols">
+        <p class="lab"><span class="num">03</span>Join</p>
+        <div>
+          <h2>It takes a village. So we built one.</h2>
+          <p class="body" style="margin-bottom:38px;">We're opening city by city, starting in Miami. Join and you'll hear from us the moment villie lands in your zip — plus a free first week.</p>
+          <div class="fields">
             <form id="wl-form" novalidate>
-              <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true"
-                     style="position:absolute;left:-9999px;opacity:0;">
+              <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;">
               <div class="row2">
-                <label class="field">
-                  <span>First name</span>
-                  <input type="text" name="first_name" required autocomplete="given-name" placeholder="Maya" maxlength="40">
-                </label>
-                <label class="field">
-                  <span>Email</span>
-                  <input type="email" name="email" required autocomplete="email" placeholder="you@email.com" maxlength="120">
-                </label>
+                <label class="field"><span>First name</span>
+                  <input type="text" name="first_name" required autocomplete="given-name" maxlength="40"></label>
+                <label class="field"><span>Email</span>
+                  <input type="email" name="email" required autocomplete="email" maxlength="120"></label>
               </div>
-              <label class="field">
-                <span>Zip code <span style="color:var(--space);">(optional — tells us where to open next)</span></span>
-                <input type="text" name="zip" autocomplete="postal-code" placeholder="33133" maxlength="10">
-              </label>
+              <label class="field"><span>Zip code — optional, it tells us where to open next</span>
+                <input type="text" name="zip" autocomplete="postal-code" maxlength="10"></label>
               <button type="submit" class="btn" id="wl-submit">
-                <span data-label>join the waitlist</span>
-                <span data-loading hidden>joining…</span>
+                <span data-label>Join the waitlist</span>
+                <span data-loading hidden>Joining…</span>
+                <span aria-hidden="true">&rarr;</span>
               </button>
-              <p class="note">no spam, ever. we'll only write when there's something worth saying.</p>
+              <p class="terms">No spam. We'll only write when there's something worth saying.</p>
             </form>
-
-            <div class="wl-ok" id="wl-ok" aria-hidden="true" role="status">
-              <h3 style="font-size:24px;">You're on the list.</h3>
-              <p style="color:var(--graphite);">We'll be in touch the moment villie opens near you.</p>
+            <div class="ok" id="wl-ok" aria-hidden="true" role="status">
+              <h2 style="margin-bottom:12px;">You're on the list.</h2>
+              <p class="body">We'll be in touch the moment villie opens near you.</p>
             </div>
           </div>
         </div>
@@ -418,11 +298,7 @@
 
   <footer class="lp">
     <div class="inner">
-      <div>
-        <a href="/" class="mark" aria-label="villie home">
-          <i role="img" aria-label="villie"></i>
-        </a>
-      </div>
+      <a href="/" class="mark" aria-label="villie home"><i role="img" aria-label="villie"></i></a>
       <div class="f-links">
         <a href="privacy.html">Privacy</a>
         <a href="terms.html">Terms</a>
@@ -434,10 +310,12 @@
   </footer>
 
   <script>
-    /* ── Waitlist → Supabase.
-       Posts with the PUBLISHABLE key, which grants anon INSERT only (migration
-       100): signups go in, nobody can read the list back. A 409 means the email
-       is already on the list, which for the mother is also success. ── */
+    document.documentElement.classList.add('js');
+
+    /* Waitlist -> Supabase. Posts with the PUBLISHABLE key, which grants anon
+       INSERT only (migration 100): signups go in, nobody can read the list
+       back. A 409 means the address is already on the list, which for the
+       mother is also success. */
     (function () {
       var form = document.getElementById('wl-form');
       if (!form) return;
@@ -455,7 +333,6 @@
         var data = new FormData(form);
         var SB_URL = 'https://albyndcruwopulazvpjs.supabase.co';
         var SB_KEY = 'sb_publishable_zBiBB7U-7BGuAcfMfivMcQ_IRuYo4yj';
-        // Attribution: ?src=nicklaus (or ?utm_source=) tags where a signup came from.
         var params = new URLSearchParams(window.location.search);
         var src = (params.get('src') || params.get('utm_source') || 'website')
           .replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 60) || 'website';
@@ -463,10 +340,8 @@
         fetch(SB_URL + '/rest/v1/waitlist', {
           method: 'POST',
           headers: {
-            'apikey': SB_KEY,
-            'Authorization': 'Bearer ' + SB_KEY,
-            'Content-Type': 'application/json',
-            'Prefer': 'return=minimal'
+            'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY,
+            'Content-Type': 'application/json', 'Prefer': 'return=minimal'
           },
           body: JSON.stringify({
             first_name: (data.get('first_name') || '').trim(),
@@ -495,10 +370,6 @@
       }
     })();
 
-    /* ── Scroll reveal. Falls back to fully visible without IntersectionObserver
-         or when the viewer prefers reduced motion. ── */
-    document.documentElement.classList.add('js');
-
     (function () {
       var els = document.querySelectorAll('.reveal');
       if (!els.length) return;
@@ -511,7 +382,7 @@
         entries.forEach(function (en) {
           if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
         });
-      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
       els.forEach(function (el) { io.observe(el); });
     })();
   </script>
