@@ -118,23 +118,24 @@
     .manual { background:var(--ink); color:var(--champagne); }
     .manual h2 { color:var(--champagne); }
     .manual .body { color:var(--heather); }
-    .weeks { display:grid; grid-template-columns:repeat(13,1fr); max-width:620px; margin-top:46px;
-             border-top:1px solid var(--rule-dk); border-left:1px solid var(--rule-dk); }
-    .week { aspect-ratio:1; display:grid; place-items:center; font-size:11px; color:var(--heather);
-            border-right:1px solid var(--rule-dk); border-bottom:1px solid var(--rule-dk); }
-    .week.on { background:var(--champagne); color:var(--ink); font-weight:500; }
+    /* The first year as one line — the same line the app draws under the week:
+       a tick per month, filled to the week she's in. Says "one to fifty-two"
+       without a grid. */
+    .year { position:relative; max-width:440px; height:50px; margin-top:40px; }
+    .year .ticks { position:absolute; left:0; right:0; top:9px; height:9px;
+                   background:repeating-linear-gradient(90deg, var(--rule-dk) 0 1px, transparent 1px calc(100% / 12)); }
+    .year .track { position:absolute; left:0; right:0; top:13px; height:1px; background:var(--rule-dk); }
+    .year .fill { position:absolute; left:0; top:12.5px; height:1.5px; width:13.5%; background:var(--champagne); }
+    .year .knob { position:absolute; top:7px; left:calc(13.5% - 7px); width:14px; height:14px; border-radius:50%;
+                  background:var(--champagne); border:2px solid var(--ink); }
+    .year .l { position:absolute; top:30px; font-size:12.5px; color:var(--heather); }
+    .year .l.a { left:0; } .year .l.b { right:0; }
 
-    /* A week, opened, next to the full fifty-two. */
-    .wk-pair { display:grid; grid-template-columns:1fr 330px; gap:48px; align-items:start; margin-top:46px; }
-    .wk-pair .weeks { margin-top:0; }
-    /* A real screen in a device frame. The rounded corner here is a physical
-       phone, not template furniture — it is the one curve on the page. Only the
-       top of the screenshot is used: below the fold it carries a placeholder
-       clinician byline and clinical copy still pending review. */
+    /* The copy beside the phone, centred on it. The phone is the one picture. */
+    .wk-pair { display:grid; grid-template-columns:1fr 340px; gap:56px; align-items:center; }
     .phone { margin:0; }
     .phone img { display:block; width:100%; height:auto; }
-    .phone figcaption { font-size:13px; color:var(--heather); margin-top:14px; }
-    @media (max-width:860px) { .wk-pair { grid-template-columns:1fr; gap:28px; } .phone { max-width:340px; } }
+    @media (max-width:860px) { .wk-pair { grid-template-columns:1fr; gap:40px; } .phone { max-width:340px; } }
 
     /* Index rows, not cards. */
     .rows { border-top:1px solid var(--rule); margin-top:10px; max-width:920px; }
@@ -177,7 +178,6 @@
       :root { --gutter:22px; }
       .row { grid-template-columns:1fr; gap:8px; }
       .state { order:-1; }
-      .weeks { grid-template-columns:repeat(9,1fr); }
       section, .statement { padding:72px 0; }
       .hero { padding:64px 0 76px; }
     }
@@ -255,20 +255,18 @@
       <span class="loop" aria-hidden="true"></span>
       <div class="wrap cols">
         <div class="reveal">
-          <h2>The week-by-week didn't have to stop.</h2>
-          <p class="body">Pregnancy gave you a briefing every week. Then the baby arrived and it went quiet — right as the questions got harder. villie picks it up at week one and runs to fifty-two.</p>
-          <p class="body">Not a feed. Not a search. The week you're actually in.</p>
           <div class="wk-pair">
-            <div class="weeks" aria-hidden="true">
-            <div class="week">1</div><div class="week">2</div><div class="week">3</div><div class="week">4</div><div class="week">5</div><div class="week">6</div><div class="week on">7</div><div class="week">8</div><div class="week">9</div><div class="week">10</div><div class="week">11</div><div class="week">12</div><div class="week">13</div>
-            <div class="week">14</div><div class="week">15</div><div class="week">16</div><div class="week">17</div><div class="week">18</div><div class="week">19</div><div class="week">20</div><div class="week">21</div><div class="week">22</div><div class="week">23</div><div class="week">24</div><div class="week">25</div><div class="week">26</div>
-            <div class="week">27</div><div class="week">28</div><div class="week">29</div><div class="week">30</div><div class="week">31</div><div class="week">32</div><div class="week">33</div><div class="week">34</div><div class="week">35</div><div class="week">36</div><div class="week">37</div><div class="week">38</div><div class="week">39</div>
-            <div class="week">40</div><div class="week">41</div><div class="week">42</div><div class="week">43</div><div class="week">44</div><div class="week">45</div><div class="week">46</div><div class="week">47</div><div class="week">48</div><div class="week">49</div><div class="week">50</div><div class="week">51</div><div class="week">52</div>
+            <div>
+              <h2>The week-by-week didn't have to stop.</h2>
+              <p class="body">Pregnancy gave you a briefing every week. Then the baby arrived and it went quiet — right as the questions got harder. villie picks it up at week one and runs to fifty-two.</p>
+              <p class="body">Not a feed. Not a search. The week you're actually in.</p>
+              <div class="year" role="img" aria-label="The first year as a line, from week one to week fifty-two, with week seven marked.">
+                <span class="ticks"></span><span class="track"></span><span class="fill"></span><span class="knob"></span>
+                <span class="l a">week 1</span><span class="l b">week 52</span>
+              </div>
             </div>
-
             <figure class="phone">
-              <img src="app-manual-week.png" alt="The villie Manual on an iPhone at week 7: the week navigator, the four pillars (sleep, feed, grow, care), this week's video and the quick take." width="800" height="1605" />
-              <figcaption>Every week, from one to fifty-two.</figcaption>
+              <img src="app-manual-week.png" alt="The villie Manual on an iPhone at week 7: the week navigator, the four pillars (sleep, feed, grow, care), this week's video and the quick take." width="654" height="1270" />
             </figure>
           </div>
         </div>
