@@ -121,7 +121,7 @@
     /* The first year as one line — the same line the app draws under the week:
        a tick per month, filled to the week she's in. Says "one to fifty-two"
        without a grid. */
-    .year { position:relative; max-width:440px; height:50px; margin-top:40px; }
+    .year { position:relative; max-width:400px; height:50px; margin-top:34px; margin-bottom:30px; }
     .year .ticks { position:absolute; left:0; right:0; top:9px; height:9px;
                    background:repeating-linear-gradient(90deg, var(--rule-dk) 0 1px, transparent 1px calc(100% / 12)); }
     .year .track { position:absolute; left:0; right:0; top:13px; height:1px; background:var(--rule-dk); }
@@ -131,11 +131,21 @@
     .year .l { position:absolute; top:30px; font-size:12.5px; color:var(--heather); }
     .year .l.a { left:0; } .year .l.b { right:0; }
 
-    /* The copy beside the phone, centred on it. The phone is the one picture. */
-    .wk-pair { display:grid; grid-template-columns:1fr 340px; gap:56px; align-items:center; }
-    .phone { margin:0; }
+    /* Three columns: the copy and the button, the phone straight on, and
+       what a week holds. The phone is the one picture. */
+    .wk-trio { display:grid; grid-template-columns:1fr 360px 1fr; gap:48px; align-items:center; }
+    /* The phone runs off the bottom of the section (the way Good Inside does it):
+       the week header and the video are what you see; the rest is implied. */
+    .phone { margin:0 0 -230px; align-self:end; }
     .phone img { display:block; width:100%; height:auto; }
-    @media (max-width:860px) { .wk-pair { grid-template-columns:1fr; gap:40px; } .phone { max-width:340px; } }
+    .manual .btn { background:var(--champagne); color:var(--ink); margin-top:8px; }
+    .facts { display:grid; gap:26px; }
+    .fact { border-left:2px solid var(--rule-dk); padding-left:20px; }
+    .fact:first-child { border-color:var(--champagne); }
+    .fact h3 { font-family:inherit; font-size:21px; letter-spacing:-.022em; font-weight:500; text-transform:none; margin:0 0 6px; color:var(--champagne); }
+    .fact p { margin:0; font-size:15px; color:var(--heather); }
+    @media (max-width:1024px) { .wk-trio { grid-template-columns:1fr 300px; gap:40px; } .facts { grid-column:1 / -1; grid-template-columns:1fr 1fr; gap:22px 40px; } }
+    @media (max-width:860px) { .wk-trio { grid-template-columns:1fr; gap:40px; } .phone { max-width:300px; margin:0 auto -200px; order:3; } .facts { grid-template-columns:1fr; } }
 
     /* Index rows, not cards. */
     .rows { border-top:1px solid var(--rule); margin-top:10px; max-width:920px; }
@@ -255,7 +265,7 @@
       <span class="loop" aria-hidden="true"></span>
       <div class="wrap cols">
         <div class="reveal">
-          <div class="wk-pair">
+          <div class="wk-trio">
             <div>
               <h2>The week-by-week didn't have to stop.</h2>
               <p class="body">Pregnancy gave you a briefing every week. Then the baby arrived and it went quiet — right as the questions got harder. villie picks it up at week one and runs to fifty-two.</p>
@@ -264,10 +274,17 @@
                 <span class="ticks"></span><span class="track"></span><span class="fill"></span><span class="knob"></span>
                 <span class="l a">week 1</span><span class="l b">week 52</span>
               </div>
+              <a href="#join" class="btn">Join the waitlist <span aria-hidden="true">&rarr;</span></a>
             </div>
             <figure class="phone">
-              <img src="app-manual-week.png" alt="The villie Manual on an iPhone at week 7: the week navigator, the four pillars (sleep, feed, grow, care), this week's video and the quick take." width="654" height="1270" />
+              <img src="app-manual-week.png" alt="The villie Manual on an iPhone at week 7: the week navigator, the four pillars (sleep, feed, grow, care), this week's video and the quick take." width="800" height="1605" />
             </figure>
+            <div class="facts">
+              <div class="fact"><h3>What's changing</h3><p>The one thing this week is about, in a four-minute video from someone who treats babies.</p></div>
+              <div class="fact"><h3>What's normal</h3><p>The quick take: two sentences on what you'll see, so the 3 a.m. question has an answer.</p></div>
+              <div class="fact"><h3>What to watch for</h3><p>The few signs worth a call, and the many that aren't.</p></div>
+              <div class="fact"><h3>What you can ignore</h3><p>The rest of the internet, for one more week.</p></div>
+            </div>
           </div>
         </div>
       </div>
