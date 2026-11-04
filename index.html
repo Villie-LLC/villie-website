@@ -125,14 +125,20 @@
     .week.on { background:var(--champagne); color:var(--ink); font-weight:500; }
 
     /* A week, opened, next to the full fifty-two. */
-    .wk-pair { display:grid; grid-template-columns:auto 240px; gap:40px; align-items:start; margin-top:46px; }
+    .wk-pair { display:grid; grid-template-columns:1fr 330px; gap:48px; align-items:start; margin-top:46px; }
     .wk-pair .weeks { margin-top:0; }
-    .wk-card { margin:0; background:var(--champagne); color:var(--ink); padding:24px 24px 20px; }
-    .wk-no { font-size:26px; letter-spacing:-.03em; font-weight:500; margin-bottom:16px; }
-    .wk-card ul { list-style:none; margin:0; padding:0; border-top:1px solid rgba(51,70,90,.18); }
-    .wk-card li { font-size:15px; padding:11px 0; border-bottom:1px solid rgba(51,70,90,.18); }
-    .wk-foot { font-size:13px; color:var(--graphite); margin:16px 0 0; }
-    @media (max-width:860px) { .wk-pair { grid-template-columns:1fr; gap:24px; } .wk-card { max-width:320px; } }
+    /* A real screen in a device frame. The rounded corner here is a physical
+       phone, not template furniture — it is the one curve on the page. Only the
+       top of the screenshot is used: below the fold it carries a placeholder
+       clinician byline and clinical copy still pending review. */
+    .phone { margin:0; }
+    .phone img {
+      display:block; width:100%; height:auto; border-radius:26px 26px 0 0;
+      border:1px solid rgba(238,227,192,.28); border-bottom:none;
+      background:var(--champagne);
+    }
+    .phone figcaption { font-size:13px; color:var(--heather); margin-top:14px; }
+    @media (max-width:860px) { .wk-pair { grid-template-columns:1fr; gap:28px; } .phone { max-width:340px; } }
 
     /* Index rows, not cards. */
     .rows { border-top:1px solid var(--rule); margin-top:10px; max-width:920px; }
@@ -264,15 +270,9 @@
             <div class="week">40</div><div class="week">41</div><div class="week">42</div><div class="week">43</div><div class="week">44</div><div class="week">45</div><div class="week">46</div><div class="week">47</div><div class="week">48</div><div class="week">49</div><div class="week">50</div><div class="week">51</div><div class="week">52</div>
             </div>
 
-            <figure class="wk-card">
-              <figcaption class="wk-no">Week 7</figcaption>
-              <ul>
-                <li>What's changing</li>
-                <li>What's normal</li>
-                <li>What to watch for</li>
-                <li>What you can ignore</li>
-              </ul>
-              <p class="wk-foot">Four minutes. One hand.</p>
+            <figure class="phone">
+              <img src="app-manual-week.png" alt="The villie Manual, showing the week navigator and the four pillars: sleep, feed, grow and care." width="920" height="690" />
+              <figcaption>Every week, from one to fifty-two.</figcaption>
             </figure>
           </div>
         </div>
