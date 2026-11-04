@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>villie · Motherhood Simplified. Confidence Amplified.</title>
-  <meta name="description" content="villie is the week-by-week manual for your baby's first year. Expert-backed guidance, a milk stash that tracks itself, calming sounds, and the gear worth buying — in one app." />
+  <meta name="description" content="villie is the week-by-week manual for your baby's first year. Written with experts, read one-handed." />
   <meta name="theme-color" content="#EEE3C0" />
   <link rel="canonical" href="https://villieapp.com/" />
 
   <meta property="og:title" content="villie · Motherhood Simplified. Confidence Amplified." />
-  <meta property="og:description" content="The week-by-week manual for your baby's first year. Expert guidance, your milk stash, calming sounds and the gear worth buying — in one app." />
+  <meta property="og:description" content="The week-by-week manual for your baby's first year. Written with experts, read one-handed." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://villieapp.com/" />
   <meta property="og:site_name" content="villie" />
@@ -68,7 +68,7 @@
     * { box-sizing:border-box; }
     img { max-width:100%; }
     main { max-width:none; margin:0; padding:0; }
-    .wrap { max-width:var(--maxw); margin:0 auto; padding:0 var(--gutter); }
+    .wrap { max-width:var(--maxw); margin:0 auto; padding:0 var(--gutter); position:relative; z-index:1; }
 
     /* One column, left-aligned. No label gutter and no section numbering:
        "01 / 02 / 03" down the side and a margin-note column are both stock
@@ -175,6 +175,38 @@
       .row2 { grid-template-columns:1fr; }
       .btn { width:100%; justify-content:space-between; }
     }
+
+    /* ── The double loop ─────────────────────────────────────────────
+       The mark is the brand's one expressive form, so it does the work
+       photography would otherwise do. Used three ways, always LARGE and
+       always cropped by the edge of its band — never small, never
+       repeated as a cute garnish. Each is a solid palette colour: the
+       book forbids opacity shifts, so depth comes from tonal choice.
+       ──────────────────────────────────────────────────────────────── */
+    .loop { position:absolute; pointer-events:none;
+      -webkit-mask:url(villie-emblem.png) no-repeat center / contain;
+              mask:url(villie-emblem.png) no-repeat center / contain; }
+
+    .hero { position:relative; overflow:hidden; }
+    .hero .loop { right:-7%; top:50%; transform:translateY(-44%);
+                  width:clamp(260px,34vw,480px); aspect-ratio:1 / .83;
+                  background:var(--heather); }
+
+    /* On the dark field a near-tone of the ink: present, not decorative. */
+    .manual { position:relative; overflow:hidden; }
+    .manual .loop { right:-10%; bottom:-30%;
+                    width:clamp(300px,40vw,620px); aspect-ratio:1 / .83;
+                    background:#3C5069; }
+
+    /* The statement band carries the repeat, scaled big enough to read as
+       texture rather than wallpaper. */
+    .statement { position:relative; overflow:hidden; }
+    .statement .loop { right:-6%; top:-28%;
+                       width:clamp(280px,36vw,540px); aspect-ratio:1 / .83;
+                       background:#A7B7C2; }
+
+    @media (max-width:700px) { .loop { display:none; } }
+
     @media (prefers-reduced-motion: no-preference) {
       /* Opt-in: if the script never runs, content renders plainly rather than
          staying invisible forever. */
@@ -199,19 +231,21 @@
 
   <main>
     <section class="hero">
+      <span class="loop" aria-hidden="true"></span>
       <div class="wrap cols">
           <h1>Motherhood Simplified.<br>Confidence Amplified.</h1>
-          <p class="lede">villie is the week-by-week manual for your baby's first year — expert-backed guidance, your milk stash, calming sounds, and the gear actually worth buying. Less Googling at 3am. More knowing.</p>
+          <p class="lede">The week-by-week manual for your baby's first year. Written with experts. Read one-handed.</p>
           <a href="#join" class="btn">Join the waitlist <span aria-hidden="true">&rarr;</span></a>
       </div>
     </section>
 
     <section class="manual">
+      <span class="loop" aria-hidden="true"></span>
       <div class="wrap cols">
         <div class="reveal">
           <h2>One week at a time.</h2>
-          <p class="body">Every week of your baby's first year gets its own briefing — what's changing, what's normal, what to watch for, and what you can safely ignore. Written plainly, grounded in expert guidance, short enough to read one-handed.</p>
-          <p class="body">No endless feed. No forty open tabs at 3am. Just the week you're actually in.</p>
+          <p class="body">Every week gets its own briefing: what's changing, what's normal, what to watch for, and what you can ignore.</p>
+          <p class="body">Not a feed. Not a search. The week you're actually in.</p>
           <div class="weeks" aria-hidden="true">
             <div class="week">1</div><div class="week">2</div><div class="week">3</div><div class="week">4</div><div class="week">5</div><div class="week">6</div><div class="week on">7</div><div class="week">8</div><div class="week">9</div><div class="week">10</div><div class="week">11</div><div class="week">12</div><div class="week">13</div>
             <div class="week">14</div><div class="week">15</div><div class="week">16</div><div class="week">17</div><div class="week">18</div><div class="week">19</div><div class="week">20</div><div class="week">21</div><div class="week">22</div><div class="week">23</div><div class="week">24</div><div class="week">25</div><div class="week">26</div>
@@ -228,23 +262,23 @@
           <h2>Everything else you reach for.</h2>
           <div class="rows">
             <div class="row">
-              <h3>Your milk stash</h3>
-              <p>Every bag, every date, every ounce — so you always know what's in the freezer and what expires next.</p>
+              <h3>Sounds that settle</h3>
+              <p>White noise, heartbeat, rain. Set a timer, press play, get your arms back.</p>
               <span class="state">In the app</span>
             </div>
             <div class="row">
-              <h3>Sounds that settle</h3>
-              <p>White noise, heartbeat, rain. Set a timer, press play, put the phone down and get your arms back.</p>
+              <h3>Your milk stash</h3>
+              <p>Every bag, every date, every ounce. You always know what's in the freezer and what goes next.</p>
               <span class="state">In the app</span>
             </div>
             <div class="row">
               <h3>Picks worth buying</h3>
-              <p>The short list, not the whole catalogue. What's genuinely useful for the week you're in — and what you can skip.</p>
+              <p>A short list for the week you're in. And a shorter one you can skip.</p>
               <span class="state">In the app</span>
             </div>
             <div class="row soon">
               <h3>Milk sharing</h3>
-              <p>Connecting mothers who have milk with mothers who need it. We're building this one carefully, and it opens when it's ready.</p>
+              <p>Mothers with milk, meeting mothers who need it. It opens when it's ready.</p>
               <span class="state">Coming soon</span>
             </div>
           </div>
@@ -253,6 +287,7 @@
     </section>
 
     <section class="statement">
+      <span class="loop" aria-hidden="true"></span>
       <div class="wrap">
         <p>Motherhood, minus the mental load.</p>
       </div>
