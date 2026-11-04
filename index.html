@@ -124,6 +124,16 @@
             border-right:1px solid var(--rule-dk); border-bottom:1px solid var(--rule-dk); }
     .week.on { background:var(--champagne); color:var(--ink); font-weight:500; }
 
+    /* A week, opened, next to the full fifty-two. */
+    .wk-pair { display:grid; grid-template-columns:auto 240px; gap:40px; align-items:start; margin-top:46px; }
+    .wk-pair .weeks { margin-top:0; }
+    .wk-card { margin:0; background:var(--champagne); color:var(--ink); padding:24px 24px 20px; }
+    .wk-no { font-size:26px; letter-spacing:-.03em; font-weight:500; margin-bottom:16px; }
+    .wk-card ul { list-style:none; margin:0; padding:0; border-top:1px solid rgba(51,70,90,.18); }
+    .wk-card li { font-size:15px; padding:11px 0; border-bottom:1px solid rgba(51,70,90,.18); }
+    .wk-foot { font-size:13px; color:var(--graphite); margin:16px 0 0; }
+    @media (max-width:860px) { .wk-pair { grid-template-columns:1fr; gap:24px; } .wk-card { max-width:320px; } }
+
     /* Index rows, not cards. */
     .rows { border-top:1px solid var(--rule); margin-top:10px; max-width:920px; }
     .row { display:grid; grid-template-columns:1fr 1.5fr auto; gap:32px; align-items:baseline;
@@ -243,14 +253,27 @@
       <span class="loop" aria-hidden="true"></span>
       <div class="wrap cols">
         <div class="reveal">
-          <h2>One week at a time.</h2>
-          <p class="body">Every week gets its own briefing: what's changing, what's normal, what to watch for, and what you can ignore.</p>
+          <h2>The week-by-week didn't have to stop.</h2>
+          <p class="body">Pregnancy gave you a briefing every week. Then the baby arrived and it went quiet — right as the questions got harder. villie picks it up at week one and runs to fifty-two.</p>
           <p class="body">Not a feed. Not a search. The week you're actually in.</p>
-          <div class="weeks" aria-hidden="true">
+          <div class="wk-pair">
+            <div class="weeks" aria-hidden="true">
             <div class="week">1</div><div class="week">2</div><div class="week">3</div><div class="week">4</div><div class="week">5</div><div class="week">6</div><div class="week on">7</div><div class="week">8</div><div class="week">9</div><div class="week">10</div><div class="week">11</div><div class="week">12</div><div class="week">13</div>
             <div class="week">14</div><div class="week">15</div><div class="week">16</div><div class="week">17</div><div class="week">18</div><div class="week">19</div><div class="week">20</div><div class="week">21</div><div class="week">22</div><div class="week">23</div><div class="week">24</div><div class="week">25</div><div class="week">26</div>
             <div class="week">27</div><div class="week">28</div><div class="week">29</div><div class="week">30</div><div class="week">31</div><div class="week">32</div><div class="week">33</div><div class="week">34</div><div class="week">35</div><div class="week">36</div><div class="week">37</div><div class="week">38</div><div class="week">39</div>
             <div class="week">40</div><div class="week">41</div><div class="week">42</div><div class="week">43</div><div class="week">44</div><div class="week">45</div><div class="week">46</div><div class="week">47</div><div class="week">48</div><div class="week">49</div><div class="week">50</div><div class="week">51</div><div class="week">52</div>
+            </div>
+
+            <figure class="wk-card">
+              <figcaption class="wk-no">Week 7</figcaption>
+              <ul>
+                <li>What's changing</li>
+                <li>What's normal</li>
+                <li>What to watch for</li>
+                <li>What you can ignore</li>
+              </ul>
+              <p class="wk-foot">Four minutes. One hand.</p>
+            </figure>
           </div>
         </div>
       </div>
