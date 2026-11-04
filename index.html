@@ -57,7 +57,7 @@
       --ink:#33465A; --graphite:#6E7180; --space:#9DA2B3; --steel:#BCBFCC;
       --smoke:#D3D6E0; --cloud:#EDEFF7;
       --rule:rgba(51,70,90,.16); --rule-dk:rgba(238,227,192,.22);
-      --gutter:28px; --maxw:1180px; --label:190px;
+      --gutter:28px; --maxw:1180px;
     }
 
     html, body {
@@ -70,11 +70,14 @@
     main { max-width:none; margin:0; padding:0; }
     .wrap { max-width:var(--maxw); margin:0 auto; padding:0 var(--gutter); }
 
-    /* The book's own page structure: a small label left, content right. */
-    .cols { display:grid; grid-template-columns:var(--label) 1fr; gap:40px; }
-    .lab { font-size:13.5px; color:var(--graphite); padding-top:9px; margin:0; }
-    .manual .lab { color:var(--heather); }
-    .num { color:var(--space); margin-right:.55em; }
+    /* One column, left-aligned. No label gutter and no section numbering:
+       "01 / 02 / 03" down the side and a margin-note column are both stock
+       generated-page decoration, flagged on sight. The headlines, the colour
+       fields and the hairline index carry the structure instead. */
+    /* Keep the page's single left margin. A narrower max-width here would be
+       re-centred by .wrap's auto margins and indent these sections away from
+       the full-bleed bands; constrain the content instead. */
+    .cols > h1, .cols > .lede, .cols > div { max-width:920px; }
 
     header.lp { background:var(--champagne); }
     header.lp .inner {
@@ -122,7 +125,7 @@
     .week.on { background:var(--champagne); color:var(--ink); font-weight:500; }
 
     /* Index rows, not cards. */
-    .rows { border-top:1px solid var(--rule); margin-top:10px; }
+    .rows { border-top:1px solid var(--rule); margin-top:10px; max-width:920px; }
     .row { display:grid; grid-template-columns:1fr 1.5fr auto; gap:32px; align-items:baseline;
            padding:26px 0; border-bottom:1px solid var(--rule); }
     .row h3 { font-size:21px; letter-spacing:-.022em; font-weight:500; margin:0; }
@@ -160,8 +163,6 @@
 
     @media (max-width:900px) {
       :root { --gutter:22px; }
-      .cols { grid-template-columns:1fr; gap:16px; }
-      .lab { padding-top:0; }
       .row { grid-template-columns:1fr; gap:8px; }
       .state { order:-1; }
       .weeks { grid-template-columns:repeat(9,1fr); }
@@ -199,18 +200,14 @@
   <main>
     <section class="hero">
       <div class="wrap cols">
-        <p class="lab">Opening city by city<br>Miami first</p>
-        <div>
           <h1>Motherhood Simplified.<br>Confidence Amplified.</h1>
           <p class="lede">villie is the week-by-week manual for your baby's first year — expert-backed guidance, your milk stash, calming sounds, and the gear actually worth buying. Less Googling at 3am. More knowing.</p>
           <a href="#join" class="btn">Join the waitlist <span aria-hidden="true">&rarr;</span></a>
-        </div>
       </div>
     </section>
 
     <section class="manual">
       <div class="wrap cols">
-        <p class="lab"><span class="num">01</span>The Manual</p>
         <div class="reveal">
           <h2>One week at a time.</h2>
           <p class="body">Every week of your baby's first year gets its own briefing — what's changing, what's normal, what to watch for, and what you can safely ignore. Written plainly, grounded in expert guidance, short enough to read one-handed.</p>
@@ -227,7 +224,6 @@
 
     <section id="inside">
       <div class="wrap cols">
-        <p class="lab"><span class="num">02</span>What's inside</p>
         <div class="reveal">
           <h2>Everything else you reach for.</h2>
           <div class="rows">
@@ -264,7 +260,6 @@
 
     <section id="join" class="join">
       <div class="wrap cols">
-        <p class="lab"><span class="num">03</span>Join</p>
         <div>
           <h2>It takes a village. So we built one.</h2>
           <p class="body" style="margin-bottom:38px;">We're opening city by city, starting in Miami. Join and you'll hear from us the moment villie lands in your zip — plus a free first week.</p>
