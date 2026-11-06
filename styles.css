@@ -216,31 +216,3 @@ footer.site .brand i { height: 26px; }
 footer.site a { color: var(--champagne); }
 footer.site nav { display: flex; gap: 20px; font-size: 15px; flex-wrap: wrap; }
 footer.site .fine { font-size: 13.5px; color: var(--space); width: 100%; margin: 0; }
-
-/* ── Legacy token bridge ────────────────────────────────────────
-   /onboard and /auth/confirm still carry inline styles written against
-   the previous warm palette. Their token names are mapped onto the new
-   one here so nothing resolves to an empty value — an undefined var()
-   silently paints nothing, which is how the confirm page's CTA became an
-   invisible button. Delete this block once those two pages are rebuilt
-   on the R2 system. ─────────────────────────────────────────────── */
-:root {
-  --cinnamon:    var(--ink);        /* was the action colour */
-  --cinnamon-dk: #2A3B4C;           /* pressed */
-  --cocoa:       var(--ink);        /* headline ink */
-  --walnut:      var(--graphite);   /* body */
-  --amber:       var(--graphite);   /* eyebrows, captions */
-  --caramel:     var(--glaucous);   /* accent */
-  --butter:      var(--champagne);
-  --parchment:   var(--champagne);
-  --paper:       var(--white);
-  --salmon:      var(--heather);
-  --rust:        var(--glaucous);
-  --brown-deep:  var(--ink);
-  --text-dark:   var(--ink);
-  --white:       #FFFFFF;
-  --olive:       var(--graphite);
-  --cream:       var(--champagne);
-  --sage:        var(--heather);
-  --moss:        var(--graphite);
-}
