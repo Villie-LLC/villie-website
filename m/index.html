@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>villie · The Manual</title>
-  <meta name="description" content="Short 2-minute videos for tired parents — peer-tested, clinician-handoff grade. Watch in the villie app." />
-  <meta name="theme-color" content="#F4ECD8" />
+  <meta name="description" content="A short video from the Manual, villie's week-by-week guide to your baby's first year. Watch it in the villie app." />
+  <meta name="theme-color" content="#EEE3C0" />
 
   <!-- Open Graph (static for V1; per-video previews need an edge function
        that renders this HTML server-side — flagged as follow-up).  -->
   <meta property="og:title" content="villie · The Manual" />
-  <meta property="og:description" content="Short videos for tired parents. Two minutes or less. Real, useful, sleep-deprivation-proof." />
+  <meta property="og:description" content="A short video from the Manual, the week-by-week guide to your baby's first year." />
   <meta property="og:type" content="website" />
   <!-- Share card: the 1200x630 brand card, not the transparent wordmark. A
        transparent 1182x827 PNG letterboxes and composites to black on
@@ -19,10 +19,10 @@
   <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="villie - a village for every mom" />
+  <meta property="og:image:alt" content="villie: Motherhood Simplified. Confidence Amplified." />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="villie · The Manual" />
-  <meta name="twitter:description" content="Short videos for tired parents." />
+  <meta name="twitter:description" content="A short video from the villie Manual." />
   <meta name="twitter:image" content="https://villieapp.com/og-image.jpg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -34,19 +34,21 @@
     /* Brand-aligned tokens copied from styles.css for self-containment.
        This page lives at /m/ and we keep it standalone so a broken
        sibling stylesheet can't 404 it. */
+    /* R2 palette. The names are the previous warm palette's, kept so the
+       rules below need no edits; the values are the brand's. */
     :root {
-      --cream:     #F4ECD8;
-      --paper:     #FDFBF6;
-      --parchment: #EAE0C8;
-      --card:      #FEFAF6;
-      --butter:    #FAD080;
-      --cinnamon:  #C07840;
-      --cinnamon-dk: #9F5F30;
-      --caramel:   #D4A880;
-      --cocoa:     #3D1F0E;
-      --walnut:    #7A4A28;
-      --amber:     #A77349;
-      --border:    #E5DBC4;
+      --cream:     #EEE3C0;  /* champagne */
+      --paper:     #FFFFFF;
+      --parchment: #EDEFF7;  /* cloud */
+      --card:      #FFFFFF;
+      --butter:    #EEE3C0;
+      --cinnamon:  #33465A;  /* ink: the action colour */
+      --cinnamon-dk: #26354A;
+      --caramel:   #6083A3;  /* glaucous */
+      --cocoa:     #33465A;
+      --walnut:    #33465A;
+      --amber:     #33465A;
+      --border:    #D3D6E0;  /* smoke */
     }
     * { box-sizing: border-box; }
     html, body {
@@ -86,7 +88,7 @@
       width: 100%; aspect-ratio: 16/9;
       border-radius: 2px; overflow: hidden;
       background: #1a1a1a;
-      box-shadow: 0 6px 18px rgba(61,31,14,0.10);
+      box-shadow: 0 6px 18px rgba(51,70,90,0.10);
       margin-bottom: 20px;
     }
     .thumb-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -199,13 +201,13 @@
       <a class="cta-primary" id="cta-open" href="#" style="display:none">Open in villie</a>
       <a class="cta-secondary" id="cta-app" href="#" style="display:none">Get the app</a>
       <div class="hint" id="hint" style="display:none">
-        The full library is in the villie app. New videos drop weekly.
+        The full Manual is in the villie app, with a new video every week.
       </div>
     </div>
 
     <div class="footer">
       <a href="/">villieapp.com</a>
-      &nbsp;·&nbsp; A village for every mom.
+      &nbsp;·&nbsp; Motherhood Simplified. Confidence Amplified.
     </div>
   </div>
 
@@ -284,7 +286,7 @@
     async function main() {
       const id = getVideoId();
       if (!id) {
-        showError('Video not found', 'This share link is missing or malformed. Visit villie to browse the full Manual.');
+        showError('Video not found', 'This link looks incomplete. Ask whoever sent it to share it again, or find the full Manual in the villie app.');
         return;
       }
 
@@ -292,12 +294,12 @@
       try {
         meta = await fetchVideoMeta(id);
       } catch (e) {
-        showError('Couldn’t load this video', 'Please check your connection and try again, or open villie directly.');
+        showError('Couldn’t load this video', 'Check your connection and try again, or open villie directly.');
         return;
       }
 
       if (!meta) {
-        showError('Video unavailable', 'This video is either pending review or no longer available. The full Manual is in the villie app.');
+        showError('Video unavailable', 'This video isn\u2019t available right now. The full Manual is in the villie app.');
         return;
       }
 
