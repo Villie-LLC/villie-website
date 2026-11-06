@@ -17,7 +17,7 @@
   <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="villie — Motherhood Simplified. Confidence Amplified." />
+  <meta property="og:image:alt" content="villie: Motherhood Simplified. Confidence Amplified." />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="villie · Motherhood Simplified. Confidence Amplified." />
@@ -26,7 +26,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png" />
@@ -82,7 +82,7 @@
     header.lp { background:var(--champagne); }
     header.lp .inner {
       max-width:var(--maxw); margin:0 auto; padding:24px var(--gutter);
-      display:flex; align-items:flex-end; justify-content:space-between; gap:20px;
+      display:flex; align-items:center; justify-content:space-between; gap:20px;
       border-bottom:1px solid var(--rule);
     }
     .lp-mark { display:inline-flex; color:var(--glaucous); text-decoration:none; }
@@ -91,14 +91,20 @@
       -webkit-mask:url(villie-wordmark.svg) no-repeat center / contain;
               mask:url(villie-wordmark.svg) no-repeat center / contain;
     }
-    nav.lp { display:flex; gap:26px; font-size:14.5px; }
+    nav.lp { display:flex; align-items:center; gap:28px; font-size:14.5px; }
     nav.lp a { color:var(--ink); text-decoration:none; padding-bottom:2px; border-bottom:1px solid transparent; }
     nav.lp a:hover { border-bottom-color:var(--ink); }
+    /* The one action on the page, also in the masthead. Square, like every button here. */
+    nav.lp a.nav-cta { background:var(--ink); color:var(--champagne); padding:10px 16px; border:none; font-weight:500; }
+    nav.lp a.nav-cta:hover { background:#26354A; }
+    .skip { position:absolute; left:-9999px; top:0; background:var(--ink); color:var(--champagne); padding:12px 16px; z-index:10; }
+    .skip:focus { left:0; }
 
     .hero { background:var(--champagne); padding:92px 0 108px; }
-    h1 { font-size:clamp(38px,5.4vw,74px); line-height:.98; letter-spacing:-.035em; font-weight:500; margin:0 0 32px; }
+    h1 { font-size:clamp(38px,5.4vw,74px); line-height:.98; letter-spacing:-.035em; font-weight:500; margin:0 0 32px; text-wrap:balance; }
+    /* Ink, not graphite: graphite on champagne is 3.8:1, under the 4.5:1 floor. */
     .lede { font-size:clamp(17px,1.7vw,20px); line-height:1.45; letter-spacing:-.01em;
-            color:var(--graphite); max-width:50ch; margin:0 0 40px; }
+            color:var(--ink); max-width:50ch; margin:0 0 40px; text-wrap:pretty; }
 
     /* Square. Not a pill. */
     .btn {
@@ -107,30 +113,20 @@
       text-decoration:none; border:none; cursor:pointer; font-family:inherit;
     }
     .btn:hover { background:#26354A; }
+    .btn [aria-hidden] { display:inline-block; }
     a:focus-visible, button:focus-visible, input:focus-visible { outline:2px solid var(--ink); outline-offset:3px; }
+    /* An ink ring disappears on an ink field. */
+    .manual :focus-visible, footer.lp :focus-visible { outline-color:var(--champagne); }
 
     section { padding:104px 0; }
     h2 { font-size:clamp(27px,3.4vw,42px); line-height:1.06; letter-spacing:-.032em;
-         font-weight:500; margin:0 0 26px; max-width:18ch; }
+         font-weight:500; margin:0 0 26px; max-width:18ch; text-wrap:balance; }
     p { margin:0 0 18px; }
-    .body { color:var(--graphite); max-width:56ch; }
+    .body { color:var(--graphite); max-width:56ch; text-wrap:pretty; }
 
     .manual { background:var(--ink); color:var(--champagne); }
     .manual h2 { color:var(--champagne); }
     .manual .body { color:var(--heather); }
-    /* The first year as one line — the same line the app draws under the week:
-       a tick per month, filled to the week she's in. Says "one to fifty-two"
-       without a grid. */
-    .year { position:relative; max-width:400px; height:50px; margin-top:34px; margin-bottom:30px; }
-    .year .ticks { position:absolute; left:0; right:0; top:9px; height:9px;
-                   background:repeating-linear-gradient(90deg, var(--rule-dk) 0 1px, transparent 1px calc(100% / 12)); }
-    .year .track { position:absolute; left:0; right:0; top:13px; height:1px; background:var(--rule-dk); }
-    .year .fill { position:absolute; left:0; top:12.5px; height:1.5px; width:13.5%; background:var(--champagne); }
-    .year .knob { position:absolute; top:7px; left:calc(13.5% - 7px); width:14px; height:14px; border-radius:50%;
-                  background:var(--champagne); border:2px solid var(--ink); }
-    .year .l { position:absolute; top:30px; font-size:12.5px; color:var(--heather); }
-    .year .l.a { left:0; } .year .l.b { right:0; }
-
     /* Two columns: the words, and the phone taking the stage. The device is
        drawn in CSS so the screen can change — Manual, picks, the milk stash. */
     .wk-trio { display:grid; grid-template-columns:1fr 430px; gap:64px; align-items:center; }
@@ -148,34 +144,59 @@
     .device .screen img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .9s ease; }
     .device .screen img.on { opacity:1; }
     .m-only { display:none; }
+    /* Which screen the phone is showing, and a way to choose it: text and a
+       hairline, the same vocabulary as the nav. Choosing one stops the rotation. */
+    .screens { display:flex; justify-content:center; gap:26px; margin:0 0 20px; }
+    .screens button { appearance:none; background:none; border:none; border-bottom:1px solid transparent; border-radius:0;
+                      padding:8px 0 6px; font:inherit; font-size:14.5px; color:var(--heather); cursor:pointer; }
+    .screens button:hover { color:var(--champagne); }
+    .screens button[aria-pressed="true"] { color:var(--champagne); border-bottom-color:var(--champagne); }
     @media (max-width:1024px) { .wk-trio { grid-template-columns:1fr 360px; gap:40px; } }
     @media (max-width:860px) {
       /* On a phone: the headline, then the app itself, then the words. */
       .wk-trio { grid-template-columns:1fr; gap:26px; }
       .wk-trio > div:first-child { display:contents; }
       .wk-trio h2 { order:1; margin-bottom:0; }
-      .phone { order:2; max-width:300px; width:100%; margin:6px auto 0; max-height:400px; overflow:hidden; position:relative; }
+      .phone { order:2; max-width:300px; width:100%; margin:6px auto 0; max-height:456px; overflow:hidden; position:relative; }
       .phone::after { content:""; position:absolute; left:0; right:0; bottom:0; height:120px; background:linear-gradient(180deg, rgba(51,70,90,0), var(--ink)); }
       .wk-trio .body { order:3; margin:0; }
-      .d-only, .year { display:none; }
+      .d-only { display:none; }
       .facts { grid-template-columns:1fr; gap:18px; order:4; margin:0; }
       .fact h3 { font-size:18px; } .fact p { font-size:14px; }
       .m-only { display:inline-flex; order:5; justify-self:start; }
     }
 
-    /* The rest of the app at a glance: a line icon, a name, one line. No cards. */
-    .glance { display:grid; grid-template-columns:repeat(3, 1fr); gap:40px 48px; margin-top:44px; max-width:980px; }
-    .g { display:grid; grid-template-columns:28px 1fr; gap:16px; align-items:start; }
-    .g svg { width:28px; height:28px; color:var(--ink); margin-top:1px; }
-    .g h3 { font-family:inherit; font-size:20px; letter-spacing:-.022em; font-weight:500; text-transform:none; margin:0 0 6px; }
-    .g p { color:var(--graphite); margin:0; font-size:15.5px; line-height:1.45; }
-    .g.soon svg, .g.soon h3 { color:var(--space); } .g.soon p { color:var(--space); }
-    .g .state { display:block; margin-top:6px; font-size:12.5px; color:var(--space); }
+    /* The rest of the app, told as the question it answers. Index rows on
+       hairlines, not cards and not an icon grid: her words large on the left,
+       the thing that settles it on the right. */
+    .asks { list-style:none; margin:44px 0 0; padding:0; border-top:1px solid var(--rule); }
+    .ask { display:grid; grid-template-columns:1.15fr 1fr; gap:56px; align-items:baseline;
+           padding:30px 0; border-bottom:1px solid var(--rule); }
+    .ask .q { font-size:clamp(23px,2.7vw,33px); line-height:1.1; letter-spacing:-.03em; font-weight:500;
+              color:var(--ink); margin:0; text-indent:-.44em; }
+    .ask h3 { font-family:inherit; font-size:18px; letter-spacing:-.02em; font-weight:500; text-transform:none; margin:0 0 5px; }
+    .ask p { color:var(--graphite); margin:0; font-size:16px; line-height:1.45; }
+    .ask .state { display:block; margin-top:8px; font-size:13.5px; color:var(--graphite); }
+
+    .statement { background:var(--heather); padding:116px 0; }
+    .statement p { font-size:clamp(28px,4vw,52px); line-height:1.08; letter-spacing:-.035em;
+                   color:var(--ink); max-width:17ch; margin:0; font-weight:500; text-wrap:balance; }
+
+    /* On champagne, body and labels are ink: graphite is 3.8:1 here. */
+    .join { background:var(--champagne); }
+    .join .body { color:var(--ink); }
+    .fields { max-width:560px; }
+    .field { display:block; margin-bottom:20px; }
+    .field span { display:block; font-size:14px; color:var(--ink); margin-bottom:7px; }
+    .field input { width:100%; padding:14px 15px; border-radius:0; border:1px solid var(--graphite);
+                   background:var(--white); font-family:inherit; font-size:16px; color:var(--ink); }
+    .field input:focus { border-color:var(--ink); }
+    .field.zip { max-width:220px; }
     .row2 { display:grid; grid-template-columns:1fr 1.25fr; gap:18px; }
     .ok { display:none; }
     .ok[aria-hidden="false"] { display:block; }
     .err { color:#8C2F1D; font-size:15px; margin-top:14px; }
-    .terms { font-size:13.5px; color:var(--graphite); margin:18px 0 0; max-width:46ch; }
+    .terms { font-size:13.5px; color:var(--ink); margin:18px 0 0; max-width:46ch; }
 
     footer.lp { background:var(--ink); color:var(--heather); padding:56px 0 44px; }
     footer.lp .inner { max-width:var(--maxw); margin:0 auto; padding:0 var(--gutter);
@@ -185,22 +206,24 @@
     footer.lp a { color:var(--champagne); text-decoration:none; border-bottom:1px solid transparent; }
     footer.lp a:hover { border-bottom-color:var(--champagne); }
     .f-links { display:flex; gap:24px; font-size:14.5px; flex-wrap:wrap; }
-    .f-fine { font-size:13px; color:var(--space); margin:26px 0 0; width:100%;
+    .f-fine { font-size:13px; color:var(--heather); margin:26px 0 0; width:100%;
               border-top:1px solid var(--rule-dk); padding-top:20px; }
 
     @media (max-width:900px) {
       :root { --gutter:22px; }
-      .row { grid-template-columns:1fr; gap:8px; }
-      .state { order:-1; }
       section, .statement { padding:64px 0; }
-      .glance { grid-template-columns:1fr 1fr; gap:28px 22px; margin-top:32px; }
-      .g { grid-template-columns:24px 1fr; gap:12px; } .g svg { width:24px; height:24px; } .g h3 { font-size:17px; } .g p { font-size:14px; }
+      .asks { margin-top:30px; }
+      .ask { gap:32px; padding:24px 0; }
       .hero { padding:64px 0 76px; }
     }
     @media (max-width:560px) {
-      header.lp .inner { flex-direction:column; align-items:flex-start; gap:14px; }
-      nav.lp { gap:18px; font-size:14px; flex-wrap:wrap; }
-      .row2 { grid-template-columns:1fr; }
+      /* One row: the wordmark and the one action. The page is a single scroll. */
+      header.lp .inner { padding-top:16px; padding-bottom:16px; }
+      .lp-mark i { height:27px; }
+      nav.lp a:not(.nav-cta) { display:none; }
+      .ask { grid-template-columns:1fr; gap:10px; }
+      .row2 { grid-template-columns:1fr; gap:0; }
+      .field.zip { max-width:none; }
       .btn { width:100%; justify-content:space-between; }
     }
 
@@ -233,9 +256,18 @@
                        width:clamp(280px,36vw,540px); aspect-ratio:1 / .83;
                        background:#A7B7C2; }
 
-    @media (max-width:700px) { .loop { display:none; } }
+    @media (max-width:700px) {
+      .manual .loop { display:none; }
+      .hero { padding-bottom:196px; }
+      .hero .loop { top:auto; bottom:-64px; right:-34px; transform:none; width:270px; }
+      .statement { padding-bottom:168px; }
+      .statement .loop { top:auto; bottom:-70px; right:-30px; width:250px; }
+    }
 
     @media (prefers-reduced-motion: no-preference) {
+      html { scroll-behavior:smooth; }
+      .btn [aria-hidden] { transition:transform .2s ease; }
+      .btn:hover [aria-hidden] { transform:translateX(4px); }
       /* Opt-in: if the script never runs, content renders plainly rather than
          staying invisible forever. */
       .js .reveal { opacity:0; transform:translateY(10px); transition:opacity .5s ease, transform .5s ease; }
@@ -245,19 +277,19 @@
 </head>
 <body>
 
+  <a class="skip" href="#main">Skip to content</a>
   <header class="lp">
     <div class="inner">
       <a href="/" class="lp-mark" aria-label="villie home"><i role="img" aria-label="villie"></i></a>
-      <nav class="lp">
+      <nav class="lp" aria-label="Primary">
+        <a href="#manual">The Manual</a>
         <a href="#inside">What's inside</a>
-        <a href="#join">Join</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="contact.html">Contact</a>
+        <a href="#join" class="nav-cta">Join the waitlist</a>
       </nav>
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <section class="hero">
       <span class="loop" aria-hidden="true"></span>
       <div class="wrap cols">
@@ -267,15 +299,15 @@
       </div>
     </section>
 
-    <section class="manual">
+    <section id="manual" class="manual">
       <span class="loop" aria-hidden="true"></span>
       <div class="wrap cols">
         <div class="reveal">
           <div class="wk-trio">
             <div>
               <h2>The week-by-week didn't have to stop.</h2>
-              <p class="body">Pregnancy gave you a briefing every week. Then the baby arrived and it went quiet — right as the questions got harder. villie picks it up at week one and runs through the first year.</p>
-              <p class="body">Not a feed. Not a search. The week you're actually in.</p>
+              <p class="body">Pregnancy gave you a briefing every week. Then the baby arrived and it went quiet, right as the questions got harder. villie picks it up at week one and runs through the first year.</p>
+              <p class="body">Not a feed. Not a search. The week you're in.</p>
               <div class="facts">
                 <div class="fact"><h3>What do I do?</h3><p>One short video a week, from someone who treats babies. Watch it, know the week.</p></div>
                 <div class="fact"><h3>How do I do it?</h3><p>The quick take, and three things to tick off tonight.</p></div>
@@ -284,6 +316,11 @@
               <a href="#join" class="btn d-only">Join the waitlist <span aria-hidden="true">&rarr;</span></a>
             </div>
             <figure class="phone" aria-label="The villie app on an iPhone: the Manual at week 7, the milk stash, and this week's picks.">
+              <div class="screens" id="screen-picker" role="group" aria-label="Choose a screen">
+                <button type="button" aria-pressed="true">The Manual</button>
+                <button type="button" aria-pressed="false">Milk stash</button>
+                <button type="button" aria-pressed="false">Picks</button>
+              </div>
               <div class="device"><div class="screen" id="rotating-screen">
                 <img src="screen-manual.jpg" alt="The Manual at week 7: the week navigator, the four pillars, this week's video and the quick take." class="on" width="800" height="1739" />
                 <img src="screen-milk.jpg" alt="The milk stash: a drop of milk showing 12 of 14 days saved, 18 bags and 86 ounces in the freezer, and the next bags to use." width="800" height="1739" loading="lazy" />
@@ -299,15 +336,33 @@
     <section id="inside">
       <div class="wrap cols">
         <div class="reveal">
-          <h2>Everything else you reach for.</h2>
-          <div class="glance">
-            <div class="g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.7s6.5 7 6.5 11.3a6.5 6.5 0 0 1-13 0C5.5 9.7 12 2.7 12 2.7z"/></svg><div><h3>Your milk stash</h3><p>Every bag, every ounce. You always know what's next.</p></div></div>
-            <div class="g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg><div><h3>The day sheet</h3><p>One page for whoever has the baby, handed over as a link.</p></div></div>
-            <div class="g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12c2-3 4-3 6 0s4 3 6 0 4-3 6 0"/><path d="M2 17c2-3 4-3 6 0s4 3 6 0 4-3 6 0"/><path d="M2 7c2-3 4-3 6 0s4 3 6 0 4-3 6 0"/></svg><div><h3>Sounds that settle</h3><p>Rain, heartbeat, white noise. Get your arms back.</p></div></div>
-            <div class="g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L2 12V2h10l8.6 8.6a2 2 0 0 1 0 2.8z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg><div><h3>Picks worth buying</h3><p>A short list. A shorter one to skip.</p></div></div>
-            <div class="g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg><div><h3>The Buzz</h3><p>What mothers are talking about this week.</p></div></div>
-            <div class="g soon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg><div><h3>Milk sharing</h3><p>Mothers with milk, meeting mothers who need it.</p><span class="state">Coming soon</span></div></div>
-          </div>
+          <h2>The rest of what's on your mind.</h2>
+          <ul class="asks">
+            <li class="ask">
+              <p class="q">&ldquo;Which bag goes next?&rdquo;</p>
+              <div><h3>Your milk stash</h3><p>Every bag, every ounce. You always know what's next.</p></div>
+            </li>
+            <li class="ask">
+              <p class="q">&ldquo;When did she last eat?&rdquo;</p>
+              <div><h3>The day sheet</h3><p>One page for whoever has the baby, handed over as a link.</p></div>
+            </li>
+            <li class="ask">
+              <p class="q">&ldquo;He only sleeps on me.&rdquo;</p>
+              <div><h3>Sounds that settle</h3><p>Rain, heartbeat, white noise. Get your arms back.</p></div>
+            </li>
+            <li class="ask">
+              <p class="q">&ldquo;Do we need a wipe warmer?&rdquo;</p>
+              <div><h3>Picks worth buying</h3><p>The few things we'd actually buy, by stage.</p></div>
+            </li>
+            <li class="ask">
+              <p class="q">&ldquo;Is it just me?&rdquo;</p>
+              <div><h3>The Buzz</h3><p>What mothers are talking about this week.</p></div>
+            </li>
+            <li class="ask">
+              <p class="q">&ldquo;More milk than freezer.&rdquo;</p>
+              <div><h3>Milk sharing</h3><p>Mothers with milk, meeting mothers who need it.</p><span class="state">Coming soon</span></div>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
@@ -315,7 +370,7 @@
     <section class="statement">
       <span class="loop" aria-hidden="true"></span>
       <div class="wrap">
-        <p>Motherhood, minus the mental load.</p>
+        <p class="reveal">Motherhood, minus the mental load.</p>
       </div>
     </section>
 
@@ -324,18 +379,18 @@
         <div>
           <h2>You don't need more information. You need this week.</h2>
           <p class="body">Written with people who treat babies. One week at a time. Nothing you don't need.</p>
-          <p class="body" style="margin-bottom:38px;">Join now and you'll be among the first in when we launch — with a free first week.</p>
+          <p class="body" style="margin-bottom:38px;">Join now and you'll be among the first in when we launch, with a free first week.</p>
           <div class="fields">
             <form id="wl-form" novalidate>
               <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;">
               <div class="row2">
                 <label class="field"><span>First name</span>
-                  <input type="text" name="first_name" required autocomplete="given-name" maxlength="40"></label>
+                  <input type="text" name="first_name" required autocomplete="given-name" autocapitalize="words" maxlength="40"></label>
                 <label class="field"><span>Email</span>
-                  <input type="email" name="email" required autocomplete="email" maxlength="120"></label>
+                  <input type="email" name="email" required autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" maxlength="120"></label>
               </div>
-              <label class="field"><span>Zip code — optional</span>
-                <input type="text" name="zip" autocomplete="postal-code" maxlength="10"></label>
+              <label class="field zip"><span>Zip code (optional)</span>
+                <input type="text" name="zip" autocomplete="postal-code" inputmode="numeric" maxlength="10"></label>
               <button type="submit" class="btn" id="wl-submit">
                 <span data-label>Join the waitlist</span>
                 <span data-loading hidden>Joining…</span>
@@ -344,7 +399,7 @@
               <p class="terms">No spam. We'll only write when there's something worth saying.</p>
             </form>
             <div class="ok" id="wl-ok" aria-hidden="true" role="status">
-              <h2 style="margin-bottom:12px;">You're on the list.</h2>
+              <h2 id="wl-ok-title" style="margin-bottom:12px;">You're on the list.</h2>
               <p class="body">We'll be in touch the moment villie launches.</p>
             </div>
           </div>
@@ -413,6 +468,7 @@
             if (!form.querySelector('.err')) {
               var p = document.createElement('p');
               p.className = 'err';
+              p.setAttribute('role', 'alert');
               p.textContent = "Couldn't save your spot. Check your connection and try again, or email help@villieapp.com.";
               form.appendChild(p);
             }
@@ -420,6 +476,8 @@
       });
 
       function reveal() {
+        var name = (form.elements['first_name'].value || '').trim().split(/\s+/)[0];
+        if (name) document.getElementById('wl-ok-title').textContent = "You're on the list, " + name + ".";
         form.hidden = true;
         ok.setAttribute('aria-hidden', 'false');
         ok.setAttribute('tabindex', '-1');
@@ -443,13 +501,34 @@
       els.forEach(function (el) { io.observe(el); });
     })();
   </script>
-    <script>
-      (function(){
-        var wrap=document.getElementById('rotating-screen'); if(!wrap) return;
-        var shots=wrap.querySelectorAll('img'); if(shots.length<2) return;
-        if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-        var i=0; setInterval(function(){ shots[i].classList.remove('on'); i=(i+1)%shots.length; shots[i].classList.add('on'); }, 4000);
-      })();
-    </script>
+  <script>
+    /* The phone: three screens. They rotate on their own until she picks one,
+       and hold still while she is pointing at or tabbing through the picker. */
+    (function () {
+      var wrap = document.getElementById('rotating-screen');
+      var picker = document.getElementById('screen-picker');
+      if (!wrap || !picker) return;
+      var shots = wrap.querySelectorAll('img');
+      var tabs = picker.querySelectorAll('button');
+      if (shots.length < 2 || tabs.length !== shots.length) return;
+      var i = 0, timer = null, paused = false;
+
+      function show(n) {
+        shots[i].classList.remove('on'); tabs[i].setAttribute('aria-pressed', 'false');
+        i = n;
+        shots[i].classList.add('on'); tabs[i].setAttribute('aria-pressed', 'true');
+      }
+      function stop() { if (timer) { clearInterval(timer); timer = null; } }
+
+      Array.prototype.forEach.call(tabs, function (tab, n) {
+        tab.addEventListener('click', function () { stop(); show(n); });
+      });
+
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      timer = setInterval(function () { if (!paused) show((i + 1) % shots.length); }, 4000);
+      ['mouseenter', 'focusin'].forEach(function (ev) { picker.addEventListener(ev, function () { paused = true; }); });
+      ['mouseleave', 'focusout'].forEach(function (ev) { picker.addEventListener(ev, function () { paused = false; }); });
+    })();
+  </script>
 </body>
 </html>
