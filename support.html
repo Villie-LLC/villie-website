@@ -10,8 +10,9 @@
   <!-- Brand typeface: Geist, per the Complete Brand Guidelines. -->
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <script src="site.js" defer></script>
 </head>
-<body>
+<body class="doc-page">
   <header class="site">
     <div class="inner">
       <a href="index.html" class="brand" aria-label="villie home"><i role="img" aria-label="villie"></i></a>
@@ -20,14 +21,23 @@
         <a href="privacy.html">Privacy</a>
         <a href="terms.html">Terms</a>
         <a href="contact.html">Contact</a>
+        <a href="index.html#join" class="nav-cta">Join the waitlist</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <h1>Support</h1>
-    <p class="lede">We respond within two business days. For urgent safety concerns inside the app, use the in-app crisis sheet (988, Crisis Text Line, Postpartum Support International).</p>
+    <div class="page-head">
+      <span class="loop" aria-hidden="true"></span>
+      <div class="inner">
+        <h1>Support</h1>
+        <p class="lede">We respond within two business days. For urgent safety concerns inside the app, use the in-app crisis sheet (988, Crisis Text Line, Postpartum Support International).</p>
+      </div>
+    </div>
 
+    <div class="doc">
+      <nav class="toc" aria-label="On this page"></nav>
+      <div class="prose">
     <h2>Get help with villie</h2>
     <p>Stuck on a screen, hit an error, or need help signing in? Email <strong>help@villieapp.com</strong> with "Support" in the subject line and a short description of what you were trying to do. Screenshots help us trace the issue faster.</p>
 
@@ -59,16 +69,20 @@
 
     <h2>Press</h2>
     <p>Press inquiries: <strong>help@villieapp.com</strong></p>
+      </div>
+    </div>
   </main>
 
   <footer class="site">
     <div class="inner">
-      <span>&copy; 2026 villie. All rights reserved.</span>
-      <span>
-        <a href="privacy.html">Privacy</a> &middot;
-        <a href="terms.html">Terms</a> &middot;
+      <a href="index.html" class="brand" aria-label="villie home"><i role="img" aria-label="villie"></i></a>
+      <nav aria-label="Footer">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="support.html">Support</a>
         <a href="contact.html">Contact</a>
-      </span>
+      </nav>
+      <p class="fine">&copy; 2026 villie. All rights reserved.</p>
     </div>
   </footer>
 </body>

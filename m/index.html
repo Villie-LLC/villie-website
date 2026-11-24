@@ -136,10 +136,13 @@
       font-weight: 600; font-size: 15px; letter-spacing: 0.02em;
       text-align: center; border-radius: 0;
       border: none; cursor: pointer; text-decoration: none;
-      transition: background 0.18s ease;
+      box-shadow: 0 5px 0 #1C2836;
     }
-    .cta-primary:hover { background: var(--cinnamon-dk); color: var(--paper); }
-    .cta-primary:active { transform: translateY(1px); }
+    /* A key, like every button on the site: a solid edge under the face. */
+    .cta-primary:hover { color: var(--paper); }
+    .cta-primary:active { transform: translateY(4px); box-shadow: 0 1px 0 #1C2836; }
+    @media (hover: hover) { .cta-primary:hover:not(:active) { transform: translateY(-2px); box-shadow: 0 7px 0 #1C2836; } }
+    @media (prefers-reduced-motion: no-preference) { .cta-primary { transition: transform .12s ease, box-shadow .12s ease; } }
 
     /* "Get the app" — secondary, lower weight. */
     .cta-secondary {
@@ -149,7 +152,7 @@
       font-weight: 600; font-size: 14px;
       text-align: center; border-radius: 0;
       border: 1.5px solid var(--border); cursor: pointer; text-decoration: none;
-      margin-top: 10px;
+      margin-top: 18px;
     }
     .cta-secondary:hover { background: var(--paper); }
 

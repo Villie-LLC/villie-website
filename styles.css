@@ -50,6 +50,8 @@
   --border:     var(--smoke);
   --accent:     var(--glaucous);
 
+  --edge:       #1C2836;  /* the side of an ink button */
+
   --gutter: 20px;
   --maxw: 760px;
 }
@@ -200,7 +202,18 @@ table.disclosures th {
   font-size: 16px; font-weight: 500; text-decoration: none;
   border: none; cursor: pointer; font-family: inherit;
 }
-.btn:hover { background: #2A3B4C; color: var(--champagne); }
+/* Buttons are keys: a solid edge under the face, in the darker tone of its
+   own colour. The face lifts under the pointer and goes down when pressed.
+   Hard edges only: no blur, no gradient. */
+.btn { box-shadow: 0 5px 0 var(--edge); }
+.btn:hover { color: var(--champagne); }
+.btn:active, .btn[disabled] { transform: translateY(4px); box-shadow: 0 1px 0 var(--edge); }
+@media (hover: hover) {
+  .btn:hover:not(:active):not([disabled]) { transform: translateY(-2px); box-shadow: 0 7px 0 var(--edge); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .btn { transition: transform .12s ease, box-shadow .12s ease; }
+}
 
 /* ── Footer ─────────────────────────────────────────────────── */
 footer.site {
@@ -216,3 +229,118 @@ footer.site .brand i { height: 26px; }
 footer.site a { color: var(--champagne); }
 footer.site nav { display: flex; gap: 20px; font-size: 15px; flex-wrap: wrap; }
 footer.site .fine { font-size: 13.5px; color: var(--space); width: 100%; margin: 0; }
+
+/* ════════════════════════════════════════════════════════════════
+   Text pages: privacy, terms, support, contact  (body.doc-page)
+   The same page the landing is, at reading pace: the masthead and its
+   one action, a champagne title band with the loop, then the text in a
+   single measured column with a contents list beside it that follows
+   the reader. Scoped to .doc-page so /onboard and /auth/confirm, which
+   share this file, are untouched.
+   The blend from the title band into the page follows the landing's
+   rule: light fields melt into each other, and a field meets the ink at
+   an edge. So the band blends into the white, and the page stops clean
+   at the footer. Delete .page-head::after to remove the blend.
+   ════════════════════════════════════════════════════════════════ */
+.doc-page {
+  --wide: 1180px; --pad: 28px;
+  --rule: rgba(51,70,90,.16);
+  --ease: cubic-bezier(.2,.7,.2,1);
+  --to-white: linear-gradient(to bottom, rgba(255,255,255,0.000) 0.0%, rgba(255,255,255,0.005) 8.3%, rgba(255,255,255,0.035) 16.7%, rgba(255,255,255,0.104) 25.0%, rgba(255,255,255,0.210) 33.3%, rgba(255,255,255,0.347) 41.7%, rgba(255,255,255,0.500) 50.0%, rgba(255,255,255,0.653) 58.3%, rgba(255,255,255,0.790) 66.7%, rgba(255,255,255,0.896) 75.0%, rgba(255,255,255,0.965) 83.3%, rgba(255,255,255,0.995) 91.7%, rgba(255,255,255,1.000) 100.0%);
+}
+
+/* Masthead: the landing's, with the pages listed. */
+.doc-page header.site { padding: 0; }
+.doc-page header.site .inner {
+  max-width: var(--wide); padding: 24px var(--pad); align-items: center;
+  border-bottom: 1px solid var(--rule);
+}
+.doc-page header.site .brand i { height: 32px; }
+.doc-page header.site nav { align-items: center; gap: 28px; font-size: 14.5px; }
+.doc-page header.site nav a { opacity: 1; padding-bottom: 2px; border-bottom: 1px solid transparent; text-decoration: none; }
+.doc-page header.site nav a:hover,
+.doc-page header.site nav a.active { border-bottom-color: var(--ink); text-decoration: none; }
+.doc-page header.site nav a.nav-cta {
+  background: var(--ink); color: var(--champagne); padding: 10px 16px; border: none; font-weight: 500;
+  box-shadow: 0 3px 0 var(--edge);
+}
+.doc-page header.site nav a.nav-cta:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--edge); }
+@media (hover: hover) {
+  .doc-page header.site nav a.nav-cta:hover:not(:active) { transform: translateY(-1px); box-shadow: 0 4px 0 var(--edge); }
+}
+
+/* Title band. */
+.doc-page main { max-width: none; margin: 0; padding: 0; position: relative; }
+.page-head { position: relative; overflow: hidden; background: var(--champagne); padding: 84px 0 150px; }
+.page-head .inner { position: relative; z-index: 1; max-width: var(--wide); margin: 0 auto; padding: 0 var(--pad); }
+.page-head h1 { font-size: clamp(40px, 6.2vw, 80px); line-height: .98; letter-spacing: -.035em; margin: 0; text-wrap: balance; }
+.page-head .meta { font-size: 15.5px; color: var(--ink); margin: 22px 0 0; }
+.page-head .lede { font-size: clamp(17px, 1.6vw, 20px); color: var(--ink); max-width: 34em; margin: 24px 0 0; }
+.page-head .loop {
+  position: absolute; pointer-events: none; right: -6%; top: 50%; transform: translateY(-46%);
+  width: clamp(260px, 32vw, 460px); aspect-ratio: 1 / .83; background: var(--heather);
+  -webkit-mask: url(villie-emblem.png) no-repeat center / contain;
+          mask: url(villie-emblem.png) no-repeat center / contain;
+}
+.page-head::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 200px; background: var(--to-white); pointer-events: none; }
+
+/* The text, and the contents list beside it. */
+.doc { max-width: var(--wide); margin: -34px auto 0; padding: 0 var(--pad) 104px; position: relative; z-index: 1; }
+.doc.has-toc { display: grid; grid-template-columns: 232px minmax(0, 720px); gap: 76px; align-items: start; }
+.toc { display: none; }
+.doc.has-toc .toc { display: block; position: sticky; top: 28px; max-height: calc(100vh - 56px); overflow: auto; font-size: 14.5px; line-height: 1.35; }
+.toc p { font-size: 13.5px; color: var(--graphite); margin: 0 0 12px; }
+.toc a { display: block; padding: 7px 0 7px 14px; border-left: 1px solid var(--border); color: var(--graphite); text-decoration: none; }
+.toc a:hover { color: var(--ink); }
+.toc a[aria-current="true"] { color: var(--ink); border-left-color: var(--ink); }
+
+.prose { max-width: 720px; font-size: 17px; line-height: 1.65; }
+.prose > :first-child { margin-top: 0; }
+.prose h2 { font-size: clamp(23px, 2.4vw, 28px); line-height: 1.15; letter-spacing: -.025em; margin: 52px 0 16px; padding-top: 30px; border-top: 1px solid var(--border); scroll-margin-top: 20px; }
+.prose h3 { font-size: 18px; margin: 30px 0 8px; }
+.prose p, .prose li { color: var(--ink); }
+.prose .lede { font-size: 19px; line-height: 1.55; color: var(--ink); }
+/* Ink, not glaucous: glaucous cannot carry text this size (4.0:1 on white).
+   It keeps the accent as the underline. */
+.prose a { color: var(--ink); text-decoration-color: var(--glaucous); text-decoration-thickness: 1.5px; }
+.prose a:hover { text-decoration-color: var(--ink); }
+.prose .callout { border: none; border-left: 2px solid var(--ink); padding: 20px 24px; margin: 30px 0; }
+.prose .callout.crisis { border-left-color: #8C2F1D; }
+.prose table.disclosures { display: block; overflow-x: auto; }
+
+/* Footer: the landing's. */
+.doc-page footer.site { margin-top: 0; padding: 56px 0 44px; position: relative; }
+.doc-page footer.site .inner { max-width: var(--wide); padding: 0 var(--pad); gap: 24px; align-items: flex-end; }
+.doc-page footer.site .brand i { height: 24px; }
+.doc-page footer.site nav { gap: 24px; font-size: 14.5px; }
+.doc-page footer.site a { text-decoration: none; border-bottom: 1px solid transparent; }
+.doc-page footer.site nav a:hover { border-bottom-color: var(--champagne); color: var(--champagne); }
+.doc-page footer.site .fine { font-size: 13px; color: var(--heather); margin: 26px 0 0; border-top: 1px solid rgba(238,227,192,.22); padding-top: 20px; }
+.doc-page footer.site :focus-visible { outline-color: var(--champagne); }
+
+@media (max-width: 1023px) {
+  .doc.has-toc { display: block; }
+  .doc.has-toc .toc { display: none; }
+}
+@media (max-width: 700px) {
+  .doc-page { --pad: 22px; }
+  .doc-page header.site .inner { flex-direction: row; align-items: center; gap: 14px; padding-top: 16px; padding-bottom: 16px; }
+  .doc-page header.site .brand i { height: 27px; }
+  .doc-page header.site nav { gap: 16px; font-size: 14px; }
+  .doc-page header.site nav a.nav-cta { display: none; }
+  .page-head { padding: 52px 0 120px; }
+  .page-head .loop { display: none; }
+  .page-head::after { height: 150px; }
+  .doc { margin-top: -30px; padding-bottom: 72px; }
+  .prose { font-size: 16.5px; }
+  .prose h2 { margin-top: 40px; padding-top: 24px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  html:has(.doc-page) { scroll-behavior: smooth; }
+  .doc-page header.site nav a.nav-cta { transition: transform .12s ease, box-shadow .12s ease; }
+  .page-head h1 { animation: page-rise .7s var(--ease) backwards; }
+  .page-head .meta, .page-head .lede { animation: page-rise .7s var(--ease) .12s backwards; }
+  .page-head .loop { animation: page-wipe 1.2s var(--ease) .15s backwards; }
+  @keyframes page-rise { from { opacity: 0; transform: translateY(12px); } }
+  @keyframes page-wipe { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+}

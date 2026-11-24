@@ -74,8 +74,12 @@
       width:100%; padding:17px 30px; margin-top:12px; font-family:inherit; font-size:16px; font-weight:500;
       color:var(--champagne); background:var(--ink); border:none; border-radius:0; cursor:pointer;
     }
-    .ob-cta:hover { background:#26354A; }
-    .ob-cta[disabled] { opacity:.6; cursor:progress; }
+    /* A key, like every button on the site: a solid edge under the face. */
+    .ob-cta { box-shadow:0 5px 0 var(--edge); margin-bottom:6px; }
+    .ob-cta:active, .ob-cta[disabled] { transform:translateY(4px); box-shadow:0 1px 0 var(--edge); }
+    .ob-cta[disabled] { opacity:.7; cursor:progress; }
+    @media (hover: hover) { .ob-cta:hover:not(:active):not([disabled]) { transform:translateY(-2px); box-shadow:0 7px 0 var(--edge); } }
+    @media (prefers-reduced-motion: no-preference) { .ob-cta { transition:transform .12s ease, box-shadow .12s ease; } }
 
     .ob-banner { padding:14px 16px; font-size:15px; line-height:1.5; margin:0 0 24px; border:1px solid; }
     .ob-banner a { color:inherit; }
